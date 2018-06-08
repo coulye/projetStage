@@ -1,0 +1,178 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <script>
+        //<![CDATA[
+        $(document).ready(function(){
+            $("[data-mask]").inputmask();
+        });
+    </script>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Création du registre incendie
+            </h1>
+            <h2>
+                Etape 9 :
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                    </div>
+                </div>
+            </h2>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- About Me Box -->
+                    <div class="box box-primary">
+                        <div class="box-body">
+
+                            <form class="form-horizontal" role="form" method="POST" accept-charset="utf-8" action="{{#if result.one}}/add_registresecuincendieetape2{{/if}}">
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <h3>Etape - Recensement des systemes d'éclairage de sécurité </h3>
+                                    </div>
+
+                                    <div class="col-sm-2" style="text-align: right">
+                                        <label>Type d'éclairage existant</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="inputName">Eclairage d'évacuation</label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="checkbox" name="checkboxeeclevac" />
+                                    </div>
+
+                                    <div class="col-sm-3 col-sm-offset-2">
+                                        <label for="inputName">Eclairage d'ambiance ou d'anti-panique</label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="checkbox" name="checkboxeeclamb" />
+                                    </div>
+
+                                    <div class="col-sm-10 col-sm-offset-2">
+                                        <p><i>Cette disposition s'applique aux locaux recevant cinquante personnes et plus et aux locaux d'une superficie
+                                            supérieure à 300 m2 en étage et au rez-de-chaussée et 100 m2 en sous-sol.<br/>
+                                            L'éclairage d'ambiance ou d'anti-panique doit être installé dans tout local ou hall dans lequel l'effectif du
+                                            public peut atteindre cent personnes en étage ou au rez-de-chaussée ou cinquante personnes en sous-sol.</i></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2" style="text-align: right">
+                                        <label>Conception de l'éclairage de sécurité</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="inputName">Source centralisée constituée d'une batterie d'accumulateurs</label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="checkbox" name="checkboxeeclaccu" />
+                                    </div>
+                                    <div class="col-sm-10 col-sm-offset-2">
+                                        <label for="inputName">Blocs autonomes utilisés pour l'éclairage d'évacuation</label>
+                                    </div>
+                                    <div class="col-sm-5 col-sm-offset-2">
+                                        <p for="inputName">à fluorescence de type permanent</p>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="radio" name="optradioevac" />
+                                    </div>
+                                    <div class="col-sm-5 col-sm-offset-2">
+                                        <p for="inputName">à incandescence</p>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="radio" name="optradioevac" />
+                                    </div>
+                                    <div class="col-sm-5 col-sm-offset-2">
+                                        <p for="inputName">Blocs autonomes utilisés pour l'éclairage d'éacuation - à fluorescence de type non permanent obligatoirement équipé d'un système
+                                            automatique de test intégré (SATI) conforme à la norme en vigueur</p>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="radio" name="optradioevac" />
+                                    </div>
+
+                                    <div class="col-sm-10 col-sm-offset-2">
+                                        <label for="inputName">Blocs autonomes utilisés pour l'éclairage de sécurité d'ambiance</label>
+                                    </div>
+                                    <div class="col-sm-5 col-sm-offset-2">
+                                        <p for="inputName">à fluorescence de type non permanent</p>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="radio" name="optradioamb" />
+                                    </div>
+                                    <div class="col-sm-5 col-sm-offset-2">
+                                        <p for="inputName">à incandescence</p>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="radio" name="optradioamb" />
+                                    </div>
+
+                                    <div class="col-sm-10 col-sm-offset-2">
+                                        <p><i>La source centralisée doit être conforme à la norme NF C 71-815.<br/>
+                                            Les blocs autonomes d'éclairage de sécurité doivent être conformes aux normes de la série NF C 71-800 les
+                                            concernant et admis à la marque NF AEAS ou faire l'objet de toute autre certification de qualité en vigueur dans
+                                            un État membre de la Communauté économique européenne.<br/>
+                                            Chapitre VIII, Section III du Règlement de sécurité ERP (Arrêté du 25 juin 1980 modifié).</i></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-2" style="text-align: right">
+                                        <label>Remarques</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <p><i>
+                                            <ul>
+                                                <li>En cas de disparition de l'alimentation normal/remplacement, l'éclairage de sécurité doit
+                                                    être alimenté par une source de sécurité dont la durée assignée de fonctionnement doit être
+                                                    de 1 heure au moins.<br/>
+                                                    Art. EC7 du Règlement de sécurité ERP (Arrêté du 25 juin 1980 modifié).</li>
+                                                <li>L’exploitant de l’établissement doit disposer en permanence d’un stock de lampes de
+                                                    rechange des modèles utilisés dans l’éclairage de sécurité, que celui-ci soit alimenté par
+                                                    une source centralisée ou constitué de blocs autonomes. Une notice descriptive des
+                                                    conditions de maintenance et de fonctionnement doit être annexée au registre de sécurité.
+                                                    Elle devra comporter les caractéristiques des pièces de rechange.<br/>
+                                                    Art. EC13 du Règlement de sécurité ERP (Arrêté du 25 juin 1980 modifié).
+                                                </li>
+                                            </ul></i></p>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-11 col-sm-12">
+                                        {{#if result.one}}
+                                            <input type="hidden" name="_id" value="{{result.one._id}}"/>
+                                        {{/if}}
+                                        <a class="btn btn-primary" href="/formaddregistreetape10" role="button">suivant</a>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </section>
+    </div><!-- /.col -->
+
+    </div><!-- /.row -->
+    </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}
+

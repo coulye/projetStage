@@ -1,0 +1,715 @@
+{
+    "GET/": {
+        "module": "index",
+        "methode": "titre",
+        "screen": "index",
+        "auth": true
+    },
+    "GET/login": {
+        "module": "login",
+        "methode": "titre",
+        "screen": "login",
+        "auth": false
+    },
+    "POST/signupAccount": {
+        "module": "signupAccount",
+        "methode": "signup",
+        "screen": "index",
+        "params_names": [
+            "login",
+            "password"
+        ],
+        "auth": false,
+        "data_model": "Accounts",
+        "redirect": true,
+        "redirect_action": "index"
+    },
+    "GET/logout": {
+        "module": "signupAccount",
+        "methode": "logout",
+        "screen": "login",
+        "params_names": [],
+        "auth": true,
+        "redirect": true,
+        "redirect_action": "login"
+    },
+    "GET/multipart": {
+        "module": "index",
+        "methode": "titre",
+        "screen": "multipart_oneFile",
+        "params_names": [],
+        "auth": true
+    },
+    "POST/uploadFile": {
+        "module": "uploader",
+        "methode": "oneFile",
+        "screen": "index",
+        "auth": true,
+        "redirect": true
+    },
+    "GET/user": {
+        "module": "finder",
+        "methode": "one",
+        "screen": "userOne",
+        "auth": true,
+        "params_names": [
+            "login"
+        ],
+        "data_model": "Accounts"
+    },
+    "GET/users": {
+        "module": "finder",
+        "methode": "populates",
+        "screen": "liste_user",
+        "auth": true,
+        "params_names": [],
+        "data_model": "Accounts",
+        "no_cache": true,
+        "data_ref": "role"
+    },
+    "GET/json/usersjson": {
+        "module": "finder",
+        "methode": "populates",
+        "screen": "liste_user",
+        "auth": true,
+        "params_names": [],
+        "data_model": "Accounts",
+        "data_ref": "role",
+        "no_cache": true,
+        "return_type": "application/json"
+    },
+    "GET/fiche_profil": {
+        "module": "finder",
+        "methode": "oneAndListMultiSchemas",
+        "screen": "fiche_profil",
+        "auth": true,
+        "params_names": [
+            "_id"
+        ],
+        "data_model": "Accounts",
+        "data_ref": [
+            "Role"
+        ]
+    },
+    "GET/administration_logs": {
+        "module": "finder",
+        "methode": "populate",
+        "screen": "log_list",
+        "auth": false,
+        "params_names": [],
+        "data_model": "LogsAccounts",
+        "data_ref": "user_id"
+    },
+    "GET/json/logsjson": {
+        "module": "finder",
+        "methode": "populate",
+        "screen": "log_list",
+        "auth": false,
+        "params_names": [],
+        "data_model": "LogsAccounts",
+        "data_ref": "user_id",
+        "return_type": "application/json"
+    },
+    "POST/user": {
+        "module": "finder",
+        "methode": "one",
+        "screen": "userOne",
+        "auth": true,
+        "params_names": [
+            "login"
+        ],
+        "data_model": "AccountId"
+    },
+    "GET/formadduser": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formadduser",
+        "auth": true,
+        "data_model": "Role"
+    },
+    "POST/adduser": {
+        "module": "inserter",
+        "methode": "one",
+        "screen": "users",
+        "auth": true,
+        "params_names": [
+            "login",
+            "password",
+            "nom",
+            "prenom",
+            "titre",
+            "sexe",
+            "password",
+            "email",
+            "telephone",
+            "adresse1",
+            "adresse2",
+            "code_postal",
+            "ville",
+            "actif",
+            "notes",
+            "role"
+        ],
+        "data_model": "Accounts",
+        "redirect": true,
+        "redirect_action": "users"
+    },
+    "GET/fiche_user": {
+        "module": "finder",
+        "methode": "oneAndListMultiSchemas",
+        "screen": "formupdateuser",
+        "auth": true,
+        "params_names": [
+            "_id"
+        ],
+        "data_model": "AccountId",
+        "data_ref": [
+            "Role"
+        ]
+    },
+    "POST/updateuser": {
+        "module": "updater",
+        "methode": "one",
+        "screen": "users",
+        "auth": true,
+        "params_names": [
+            "_id",
+            "login",
+            "password",
+            "nom",
+            "prenom",
+            "titre",
+            "sexe",
+            "password",
+            "email",
+            "telephone",
+            "adresse1",
+            "adresse2",
+            "code_postal",
+            "ville",
+            "actif",
+            "notes",
+            "role"
+        ],
+        "data_model": "AccountId",
+        "redirect": true,
+        "redirect_action": "users"
+    },
+    "GET/deleteuser": {
+        "module": "deleter",
+        "methode": "oneById",
+        "screen": "users",
+        "auth": true,
+        "params_names": [
+            "_id"
+        ],
+        "data_model": "AccountId",
+        "redirect": true,
+        "redirect_action": "users"
+    },
+    "GET/updatelogs": {
+        "module": "finder",
+        "methode": "one",
+        "screen": "formupdatelogs",
+        "auth": true,
+        "params_names": [
+            "_id"
+        ],
+        "data_model": "LogsAccounts"
+    },
+    "GET/index": {
+        "module": "finder",
+        "methode": "populate",
+        "screen": "index",
+        "auth": true,
+        "no_cache": true,
+        "data_model": "Accounts",
+        "params_names": [
+            "login"
+        ],
+        "data_ref": "functionalities"
+    },
+    "GET/administration_glances": {
+        "module": "glances",
+        "methode": "getData",
+        "screen": "glancesviewtab",
+        "auth": true
+    },
+    "GET/json/getdatanetwork": {
+        "module": "glances",
+        "methode": "getDatanetwork",
+        "auth": false,
+        "return_type": "application/json"
+    },
+    "GET/listmulti": {
+        "module": "finder",
+        "methode": "listMultiSchemas",
+        "screen": "resultmultischema",
+        "auth": true,
+        "params_names": [],
+        "data_model": [
+            "Accounts",
+            "LogsAccounts"
+        ]
+    },
+    "GET/listmultiasync": {
+        "module": "finder",
+        "methode": "listMultiSchemasAsync",
+        "screen": "resultmultischema",
+        "auth": true,
+        "params_names": [],
+        "data_model": [
+            "Accounts",
+            "LogsAccounts"
+        ]
+    },
+    "GET/countries": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "countries_list",
+        "auth": true,
+        "data_model": "Countries"
+    },
+    "GET/jsoncountries": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "countries_list",
+        "auth": true,
+        "data_model": "Countries",
+        "return_type": "application/json"
+    },
+    "GET/listparamslogs": {
+        "module": "finder",
+        "methode": "listWithParams",
+        "screen": "countries_list",
+        "auth": true,
+        "params_names": [
+            "event"
+        ],
+        "data_model": "LogsAccounts",
+        "return_type": "application/json"
+    },
+    "GET/administration_list_annuaires": {
+        "module": "getview",
+        "methode": "view",
+        "screen": "annuaires",
+        "auth": true,
+        "params_names": []
+    },
+    "GET/json/annuaires": {
+        "module": "files",
+        "methode": "list",
+        "screen": "annuaires",
+        "auth": true,
+        "params_names": [],
+        "data_model": "conf/profiles/",
+        "return_type": "application/json"
+    },
+    "GET/readFlightPlan": {
+        "module": "files",
+        "methode": "read",
+        "screen": "code_editor",
+        "auth": true,
+        "params_names": [
+            "name"
+        ],
+        "data_model": "conf/profiles"
+    },
+    "GET/administration_directory_schemas": {
+        "module": "getview",
+        "methode": "view",
+        "screen": "schemas",
+        "auth": true,
+        "params_names": []
+    },
+    "GET/json/schemas": {
+        "module": "files",
+        "methode": "list",
+        "screen": "schemas",
+        "auth": true,
+        "params_names": [],
+        "data_model": "conf/",
+        "return_type": "application/json"
+    },
+    "GET/readDirSchema": {
+        "module": "files",
+        "methode": "read",
+        "screen": "code_editor",
+        "auth": true,
+        "params_names": [
+            "name"
+        ],
+        "data_model": "conf"
+    },
+    "POST/writeProfile": {
+        "module": "files",
+        "methode": "write",
+        "screen": "code_editor",
+        "auth": true,
+        "params_names": [
+            "name",
+            "content"
+        ],
+        "data_model": "conf/profiles"
+    },
+    "GET/gestiondroitsusers": {
+        "module": "finder",
+        "methode": "populates",
+        "screen": "liste_user_rights",
+        "auth": true,
+        "params_names": [],
+        "data_model": "Accounts",
+        "no_cache": true,
+        "data_ref": "role"
+    },
+    "GET/modifyuserrights": {
+        "module": "finder",
+        "methode": "populateAndListMultiSchemas",
+        "screen": "form_user_modify_rights",
+        "auth": true,
+        "data_model": "Accounts",
+        "data_resources": [
+            "Functionalities"
+        ],
+        "params_names": [
+            "_id"
+        ],
+        "data_ref": "Functionalities"
+    },
+    "POST/updateuserrights": {
+        "module": "updater",
+        "methode": "one",
+        "screen": "liste_user_rights",
+        "auth": true,
+        "params_names": [
+            "_id",
+            "functionalities"
+        ],
+        "data_model": "Accounts",
+        "redirect": true,
+        "redirect_action": "gestiondroitsusers"
+    },
+    "GET/rh_registreuniquedupersonneletstagiaires": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "form_registre_unique_personnel",
+        "auth": true,
+        "data_model": "RegistreUniqueDuPersonnel",
+        "params_names": []
+    },
+    "GET/json/rh_registreuniquedupersonneletstagiaires": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "form_registre_unique_personnel",
+        "auth": true,
+        "data_model": "RegistreUniqueDuPersonnel",
+        "return_type": "application/json"
+    },
+    "GET/nouveaupersonneloustagiaire": {
+        "module": "getview",
+        "methode": "view",
+        "screen": "fiche_saisie_registre_personnel",
+        "auth": true,
+        "params_names": []
+    },
+    "POST/addpersonnelstagiaire": {
+        "module": "inserter",
+        "methode": "one",
+        "screen": "form_registre_unique_personnel",
+        "auth": true,
+        "params_names": [
+            "nom",
+            "prenom",
+            "adresse",
+            "num_SS",
+            "nationalite",
+            "sexe",
+            "titre",
+            "date_naissance",
+            "emploi_qualification",
+            "date_entree",
+            "date_sortie",
+            "trav_etranger_titre",
+            "trav_etranger_num_ordre",
+            "jeune_trav_apprentissage",
+            "jeune_trav_profess",
+            "trav_contrat_specif_CDD",
+            "trav_contrat_specif_tps_partiel",
+            "trav_contrat_specif_autre",
+            "generer_fiche_form_habil_autor"
+        ],
+        "data_model": "RegistreUniqueDuPersonnel",
+        "redirect": true,
+        "redirect_action": "rh_registreuniquedupersonneletstagiaires"
+    },
+    "GET/deletepersonnelduregistreunique": {
+        "module": "deleter",
+        "methode": "oneById",
+        "screen": "form_registre_unique_personnel",
+        "auth": true,
+        "params_names": [
+            "_id"
+        ],
+        "data_model": "RegistreUniqueDuPersonnel",
+        "redirect": true,
+        "redirect_action": "rh_registreuniquedupersonneletstagiaires"
+    },
+    "GET/fiche_saisie_registre_personnel": {
+        "module": "finder",
+        "methode": "one",
+        "screen": "fiche_saisie_registre_personnel",
+        "auth": true,
+        "data_model": "RegistreUniqueDuPersonnel",
+        "params_names": [
+            "_id"
+        ]
+    },
+    "GET/doc_suiviformationhabilitationsautorisations": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "form_suivi_form_habil_autor",
+        "auth": true,
+        "data_model": "RegistreUniqueDuPersonnel"
+    },
+    "GET/json/suiviformationhabilitationsautorisations": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "form_suivi_form_habil_autor",
+        "auth": true,
+        "data_model": "RegistreUniqueDuPersonnel",
+        "return_type": "application/json"
+    },
+    "GET/fiche_modif_suivi_form_hab_autor": {
+        "module": "finder",
+        "methode": "oneAndListMultiSchemas",
+        "screen": "fiche_modif_suivi_form_habil_autor",
+        "auth": true,
+        "data_model": "RegistreUniqueDuPersonnel",
+        "params_names": [
+            "_id"
+        ],
+        "data_ref": [
+            "TypeSuivi",
+            "OrganismesFormations"
+        ]
+    },
+    "GET/json/listesuiviformationshabilitationautorisation": {
+        "module": "finder",
+        "methode": "populates",
+        "screen": "form_suivi_form_habil_autor",
+        "auth": true,
+        "data_model": "SuiviFormationHabilitationAutorisation",
+        "params_names": [
+            "personnel_id"
+        ],
+        "data_ref": "personnel_id type_suivi organisme_formation",
+        "return_type": "application/json"
+    },
+    "POST/insertsuiviforonepersonnel": {
+        "module": "inserter",
+        "methode": "one",
+        "screen": "fiche_modif_suivi_form_habil_autor",
+        "auth": true,
+        "params_names": [
+            "personnel_id",
+            "type_suivi",
+            "type",
+            "date",
+            "validite",
+            "date_fin_validite",
+            "organisme_formation",
+            "redirect_id"
+        ],
+        "params_redirect": [
+            "personnel_id"
+        ],
+        "data_model": "SuiviFormationHabilitationAutorisation",
+        "redirect": true,
+        "redirect_action": "fiche_modif_suivi_form_hab_autor"
+    },
+    "GET/hscti_registresecuincendie": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "registre_securite_incendie",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+
+    "GET/documentuniqueevalrisquespros": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "duerp",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "GET/tableaurisquespros": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "tableaurisquespros",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+
+    "GET/administration_database": {
+        "module": "files",
+        "methode": "read",
+        "screen": "schema_database",
+        "auth": true,
+        "data_model": "public",
+        "params_names": ["name"]
+    },
+    "POST/saveSchemaDatabase": {
+        "module": "files",
+        "methode": "write",
+        "screen": "schema_database",
+        "auth": true,
+        "data_model": "public",
+        "params_names": ["name", "content"]
+    },
+    "GET/formaddregistreetape1": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddregistreetape1",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "POST/formaddregistreetape1": {
+      "module": "inserter",
+      "methode": "registreEtape",
+      "screen": "formaddregistreetape1",
+      "auth": true,
+      "params_names": [
+        ["data_creation", "nom", "prenom"],
+        ["libelle", "tel", "adresse1", "adresse2", "code_postal", "ville"],
+        ["libelle", "tel", "adresse1", "adresse2", "code_postal", "ville"],
+        ["libelle", "tel", "adresse1", "adresse2", "code_postal", "ville"]
+      ],
+      "data_model": ["MiseAJour", "NumeroUtiles", "NumerosUrgence", "Installateurs", "VerificateursAgrees"],
+      "redirect": true,
+      "redirect_action": "formaddregistreetape2"
+    },
+    "GET/formaddregistreetape2": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddregistreetape2",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "POST/formaddregistreetape2": {
+        "module": "inserter",
+        "methode": "registreEtape2",
+        "screen": "formaddregistreetape2",
+        "auth": true,
+        "params_names": [
+            ["nom", "prenom"],
+            ["raison_social", "adresse1", "adresse2", "code_postal", "ville"],
+            ["libelle", "date_construction", "nbre_niveaux"],
+            ["emplacement", "date_maj", "visa"]
+        ],
+        "data_model": ["RegistreUniqueDuPersonnel", "Entreprises", "BatimentsEntreprises", "PlanEtablissement"],
+        "redirect": true,
+        "redirect_action": "formaddregistreetape3"
+    },
+    "GET/formaddregistreetape3": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddregistreetape3",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "POST/formaddregistreetape3": {
+        "module": "inserter",
+        "methode": "registreEtape",
+        "screen": "formaddregistreetape3",
+        "auth": true,
+        "params_names": [
+            "annee", "categorie_salarie", "nbre", "date_periode"
+        ],
+        "data_model": ["RegistreUniqueDuPersonnel"],
+        "redirect": true,
+        "redirect_action": "formaddregistreetape4"
+    },
+    "GET/formaddregistreetape4": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddregistreetape4",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "POST/formaddregistreetape4": {
+        "module": "inserter",
+        "methode": "registreEtape",
+        "screen": "formaddregistreetape4",
+        "auth": true,
+        "params_names": [
+            ["nom", "prenom"],
+            ["emplacement_poste_travail"]
+        ],
+        "data_model": ["RegistreUniqueDuPersonnel", "ServiceSecuriteIncendie"],
+        "redirect": true,
+        "redirect_action": "formaddregistreetape5"
+    },
+    "GET/formaddregistreetape5": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddregistreetape5",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "POST/formaddregistreetape5": {
+        "module": "inserter",
+        "methode": "registreEtape",
+        "screen": "formaddregistreetape4",
+        "auth": true,
+        "params_names":
+            ["theme", "observation", "date"],
+        "data_model": ["InstructionPersonnel"],
+        "redirect": true,
+        "redirect_action": "formaddregistreetape5"
+    },
+    "GET/formaddregistreetape6": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddregistreetape6",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "GET/formaddregistreetape7": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddregistreetape7",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "GET/formaddregistreetape8": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddregistreetape8",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "GET/formaddregistreetape9": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddregistreetape9",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "GET/formaddregistreetape10": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddregistreetape10",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "POST/crea_registre_incendie": {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddregistre",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    }
+}
+
+                    
+                    

@@ -1,0 +1,136 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <script>
+        //<![CDATA[
+        $(document).ready(function(){
+            $.fn.datepicker.defaults.format = "dd/mm/yyyy";
+            $('.datepicker').datepicker({
+                language: 'fr'
+            });
+        });
+        function calcValidity() {
+            var date = document.getElementById('date').value;
+            var TheDate  = new Date(date).toISOString();
+            moment.locale('fr');
+            var dateDebut = moment(TheDate).utc(true);
+            var duree = parseInt(document.getElementById('validite').value);
+            var dateFin = moment(dateDebut).utc(true).add(duree, 'M');
+            document.getElementById('date_fin_validite').value = dateFin.format("L");
+        }
+    </script>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Fiche Individuelle de suivi
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/index"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#">formation - habilitation - autorisation</a></li>
+                <li class="active">{{#if result.one.nom}}Modification{{else}}Création{{/if}}</li>
+            </ol>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- About Me Box -->
+                    <div class="box box-primary">
+                        <div class="col-xs-12 col-sm-12">
+                            <h3>Modification du suivi des formations, habilitations et autorisations de :</h3>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-2 control-label">Nom / Prénom : </label>
+                            <div class="col-sm-3">
+                                <input class="form-control" disabled placeholder="Name" type="text" name="nom" title="Nom employé" value="{{#if result.one}}{{result.one.nom}}{{/if}}" required="required" autofocus/>
+                            </div>
+                            <div class="col-sm-3">
+                                <input class="form-control" disabled placeholder="Firstname" type="text" name="prenom" title="prénom employé" value="{{#if result.one}}{{result.one.prenom}}{{/if}}" required="required"/>
+                            </div>
+                            <label for="date_naissance" class="col-sm-2 control-label">Date Naissance </label>
+                            <div class="col-sm-2">
+                                    <input id="date_naissance" disabled type="text" class="form-control" placeholder="Date naissance" name="date_naissance"  value="{{#if result.one}}{{result.one.date_naissance}}{{/if}}" title="Date de naissance employé" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-2 control-label">Type de suivi : (saisissez le suivi ici)</label>
+                            <form class="form-horizontal" role="form" method="POST" accept-charset="utf-8" action="/insertsuiviforonepersonnel">
+                                <div class="col-sm-2">
+                                    <select class="form-control" id="type_suivi" name="type_suivi" required="required">
+                                        <option value="">Sélectionné un type de suivi</option>
+                                        {{#each result.TypeSuivi}}
+                                            <option value="{{this._id}}">{{this.libelle}}</option>
+                                        {{/each}}
+                                     </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <input id="type" type="text" class="form-control" placeholder="type" name="type"  value="" title="Type" required="required">
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input id="date" type="text" class="datepicker form-control" placeholder="Date" name="date"  value="" title="Date activité" required="required">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <input id="validite" type="text" class="form-control" placeholder="Validité" name="validite"  value="" title="Validité" required="required" onblur="calcValidity();">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input id="date_fin_validite" type="text" class="form-control" placeholder="Date fin validité" name="date_fin_validite"  value="" title="Date fin validité" required="required" onfocus="calcValidity();">
+                                </div>
+                                <div class="col-sm-2">
+                                    <select class="form-control" id="organisme_formation" name="organisme_formation" title="Choisir un organisme de formation" required="required">
+                                        {{#each result.OrganismesFormations}}
+                                            <option value="{{this._id}}">{{this.raison_sociale}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    {{#if result.one}}
+                                        <input type="hidden" name="redirect_id" value="{{result.one._id}}"/>
+                                        <input type="hidden" name="personnel_id" value="{{result.one._id}}"/>
+                                    {{/if}}
+                                    <button type="submit" name="button" id="button" class="btn btn-primary">Enregistrer</button>
+                                </div>
+                            </form>
+                        </div>
+                        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    </div>
+                    <div class="box box-primary">
+                        <div class="col-xs-12 col-sm-12">
+                            <h3 class="box-title">Liste des formations, habilitations et autorisations du salarié : </h3>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                        </div><!-- /.box-header -->
+                        <div class="form-group">
+                            <div class="box-body">
+                                {{renderComponent 'dataTable'
+                                                  urlJson="/listesuiviformationshabilitationautorisation"
+                                                  param=result.one._id
+                                                  nbLines="10"
+                                                  isEditBtn=false
+                                                  urlEditBtn="/#"
+                                                  idEditBtn="_id"
+                                                  isDelBtn=false
+                                                  urlDelBtn="/deleteuser"
+                                                  idDelBtn="_id"
+                                                  values='["_id", "personnel_id.nom", "type_suivi.libelle", "type", "date", "validite", "date_fin_validite", "organisme_formation.raison_sociale"]'
+                                }}
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}

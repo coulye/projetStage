@@ -1,0 +1,271 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <script>
+        //<![CDATA[
+        $(document).ready(function(){
+            $("[data-mask]").inputmask();
+        });
+
+        //fonction ajout de champs
+        $(document).ready(function() {
+            var maxField = 20; //limitation des elements
+            var x = 1; //Initial field counter is 1
+
+
+            //ajout guide evacuation
+            var addButtonext = $('.add_buttonext'); //bouton ajouter
+            var wrapperext = $('.field_wrapperext'); //Input field wrapper
+            var fieldHTMLext = '<div class="col-sm-2 style="text-align: right"">                                                <label for="inputName"></label>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="field_wrapperext">\n' +
+                    '                                            <div class="col-sm-2">\n' +
+                    '                                                <input class="form-control" placeholder="numero de l\'extincteur" type="text" name="numextinct[]" value="{{#if
+                            result}}{{result.RecensementExtincteur.numero}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="col-sm-2">\n' +
+                    '                                                <input class="form-control" placeholder="capacite en Litre" type="text" name="cpaextinct[]" value="{{#if
+                            result}}{{result.RecensementExtincteur.capacite}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '\n' +
+                    '                                            <div class="col-sm-2">\n' +
+                    '                                                <input class="form-control" placeholder="Nature (eau/poudre/CO2/...)" type="text" name="natureextinct[]" value="{{#if
+                            result}}{{result.RecensementExtincteur.nature_produit}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="col-sm-4">\n' +
+                    '                                                <input class="form-control" placeholder="Emplacement" type="text" name="emplextinct[]" value="{{#if
+                            result}}{{result.RecensementExtincteur.emplacement}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div></div>';
+            $(addButtonext).click(function () { //Once add button is clicked
+                if (x < maxField) { //Check maximum number of input fields
+                    x++; //Increment field counter
+                    $(wrapperext).append(fieldHTMLext); // Add field html
+                }
+            });
+
+            //ajout serre file
+            var addButtonria = $('.add_buttonria'); //bouton ajouter
+            var wrapperria = $('.field_wrapperria'); //Input field wrapper
+            var fieldHTMLria = '<div class="col-sm-2 col-sm-offset-2"><input class="form-control" placeholder="numero" type="text" name="numria[]" value="{{#if
+                            result}}{{result.RecensementRobinetIncendie.numero}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="col-sm-2">\n' +
+                    '                                                <input class="form-control" placeholder="Diametre du robinet" type="text" name="diaria[]" value="{{#if
+                            result}}{{result.RecensementRobinetIncendie.diametre}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '\n' +
+                    '                                            <div class="col-sm-2">\n' +
+                    '                                                <input class="form-control" placeholder="longeuru du tuyau" type="text" name="longria[]" value="{{#if
+                            result}}{{result.RecensementRobinetIncendie.longueur_tuyeau}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="col-sm-4">\n' +
+                    '                                                <input class="form-control" placeholder="Emplacement" type="text" name="emplria[]" value="{{#if
+                            result}}{{result.RecensementRobinetIncendie.emplacement}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div></div>';
+            $(addButtonria).click(function () { //Once add button is clicked
+                if (x < maxField) { //Check maximum number of input fields
+                    x++; //Increment field counter
+                    $(wrapperria).append(fieldHTMLria); // Add field html
+                }
+            });
+
+            //ajout secouriste
+            var addButtonautre = $('.add_buttonautre'); //bouton ajouter
+            var wrapperautre = $('.field_wrapperautre'); //Input field wrapper
+            var fieldHTMLautre = '<div class="col-sm-2 col-sm-offset-2"><input class="form-control" placeholder="Type de moyen" type="text" name="typeautremoyen[]" value="{{#if
+                            result}}{{result.RecensementAutreMoyens.numero}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                        </div>\n' +
+                    '\n' +
+                    '                                        <div class="col-sm-4">\n' +
+                    '                                            <input class="form-control" placeholder="observation" type="text" name="obsautremoyen[]" value="{{#if
+                            result}}{{result.RecensementAutreMoyens.description}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                        </div>\n' +
+                    '                                        <div class="col-sm-4">\n' +
+                    '                                            <input class="form-control" placeholder="Emplacement" type="text" name="emplautremoyen[]" value="{{#if
+                            result}}{{result.RecensementAutreMoyens.emplacement}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                        </div></div>';
+            $(addButtonautre).click(function () { //Once add button is clicked
+                if (x < maxField) { //Check maximum number of input fields
+                    x++; //Increment field counter
+                    $(wrapperautre).append(fieldHTMLautre); // Add field html
+                }
+            });
+        });
+    </script>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Création du registre incendie
+            </h1>
+            <h2>
+                Etape 7 :
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                    </div>
+                </div>
+            </h2>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- About Me Box -->
+                    <div class="box box-primary">
+                        <div class="box-body">
+
+                            <form class="form-horizontal" role="form" method="POST" accept-charset="utf-8" action="{{#if result.one}}/add_registresecuincendieetape2{{/if}}">
+                                <div class="col-xs-12 col-sm-12">
+                                    <h3>Etape - Recensement des moyens d'extinction </h3>
+                                </div>
+
+                                <div class="form-group">
+                                        <div class="col-xs-12 col-sm-12">
+                                            <div class="col-sm-2" style="text-align: right">
+                                                <label for="inputName">Extincteur</label>
+                                            </div>
+                                            <div class="field_wrapperext">
+                                            <div class="col-sm-2">
+                                                <input class="form-control" placeholder="numero de l'extincteur" type="text" name="numextinct[]" value="{{#if result}}{{result.RecensementExtincteur.numero}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input class="form-control" placeholder="capacite en Litre" type="text" name="cpaextinct[]" value="{{#if result}}{{result.RecensementExtincteur.capacite}}{{/if}}" required="required" autofocus/>
+                                            </div>
+
+                                            <div class="col-sm-2">
+                                                <input class="form-control" placeholder="Nature (eau/poudre/CO2/...)" type="text" name="natureextinct[]" value="{{#if result}}{{result.RecensementExtincteur.nature_produit}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" placeholder="Emplacement" type="text" name="emplextinct[]" value="{{#if result}}{{result.RecensementExtincteur.emplacement}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-2" style="text-align: right">
+                                            <label for="inputName">Ajouter un extincteur</label>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a href="javascript:void(0);" class="add_buttonext" title="Ajouter un extincteur"><button type="button" class="btn btn-primary">Ajouter</button></a>
+                                        </div>
+                                            <div class="col-sm-10 col-sm-offset-2">
+                                                <p><i>
+                                                    <ul>
+                                                        <li>Le nombre d’extincteurs nécessaire est fonction du règlement applicable, de la surface, du nombre de niveaux
+                                                            et du risque existant (électrique, produits inflammables...).</li>
+                                                        <li>Les extincteurs doivent être conformes aux normes françaises et porter l’estampille NF de couleur grise.</li>
+                                                        <li>Les appareils mobiles doivent être répartis de préférence dans les dégagements, en des endroits bien visibles et
+                                                            facilement accessibles. Ils ne doivent pas apporter de gêne à la circulation des personnes et leur emplacement
+                                                            doit être tel que leur efficacité ne risque pas d'être compromise par les variations éventuelles de température
+                                                            survenant dans l'établissement. Art. MS 39 du règlement de sécurité ERP (Arrêté du 25 juin 1980 modifié).</li>
+                                                        <li>La nature du produit extincteur dépendra de l’activité, des installations et des risques qui y sont liés.</li>
+                                                    </ul></i></p>
+                                            </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <div class="col-xs-12 col-sm-12">
+                                            <div class="col-sm-2" style="text-align: right">
+                                                <label for="inputName">Reseau incendie armé (R.I.A)</label>
+                                            </div>
+                                            <div class="field_wrapperria">
+                                            <div class="col-sm-2">
+                                                <input class="form-control" placeholder="numero" type="text" name="numria[]" value="{{#if result}}{{result.RecensementRobinetIncendie.numero}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input class="form-control" placeholder="Diametre du robinet" type="text" name="diaria[]" value="{{#if result}}{{result.RecensementRobinetIncendie.diametre}}{{/if}}" required="required" autofocus/>
+                                            </div>
+
+                                            <div class="col-sm-2">
+                                                <input class="form-control" placeholder="longeuru du tuyau" type="text" name="longria[]" value="{{#if result}}{{result.RecensementRobinetIncendie.longueur_tuyeau}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" placeholder="Emplacement" type="text" name="emplria[]" value="{{#if result}}{{result.RecensementRobinetIncendie.emplacement}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-2" style="text-align: right">
+                                            <label for="inputName">Ajouter un R.I.A.</label>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a href="javascript:void(0);" class="add_buttonria" title="Ajouter un extincteur"><button type="button" class="btn btn-primary">Ajouter</button></a>
+                                        </div>
+                                        <div class="col-sm-10 col-sm-offset-2">
+                                            <p><i>
+                                                <ul>
+                                                    <li>Un R.I.A. est une lance d’incendie munie d’un diffuseur situé au bout d’un tuyau semi-rigide, d’une longueur
+                                                        minimale de 20 mètres et raccordé en permanence à une vanne branchée sur une canalisation d’eau sous
+                                                        pression. La composition, les caractéristiques hydrauliques et l'installation de robinets d'incendie armés doivent
+                                                        être conformes aux normes françaises.</li>
+                                                    <li>Les robinets d'incendie armés doivent être numérotés en une série unique.</li>
+                                                    <li>Les R.I.A sont désignés par leur diamètre nominal (DN en mm) qui peut être DN 19, DN 25 ou DN 40.<br/>Art. MS 14 du règlement de sécurité ERP (Arrêté du 25 juin 1980 modifié)</li>
+                                                </ul></i></p>
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <div class="col-sm-2" style="text-align: right">
+                                            <label for="inputName">Autre moyen d'extinction</label>
+                                        </div>
+                                        <div class="field_wrapperautre">
+                                        <div class="col-sm-2">
+                                            <input class="form-control" placeholder="Type de moyen" type="text" name="typeautremoyen[]" value="{{#if result}}{{result.RecensementAutreMoyens.numero}}{{/if}}" required="required" autofocus/>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <input class="form-control" placeholder="observation" type="text" name="obsautremoyen[]" value="{{#if result}}{{result.RecensementAutreMoyens.description}}{{/if}}" required="required" autofocus/>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input class="form-control" placeholder="Emplacement" type="text" name="emplautremoyen[]" value="{{#if result}}{{result.RecensementAutreMoyens.emplacement}}{{/if}}" required="required" autofocus/>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-sm-2" style="text-align: right">
+                                        <label for="inputName">Ajouter un autre moyen d'extinction</label>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="javascript:void(0);" class="add_buttonautre" title="Ajouter un extincteur"><button type="button" class="btn btn-primary">Ajouter</button></a>
+                                    </div>
+                                    <div class="col-sm-10 col-sm-offset-2">
+                                        <p><i>Seaux-pompes, bouches ou poteaux d’incendie, colonnes sèches ou humides, moto-pompes, couvertures anti-
+                                            feu, couvertures de survie, brancards, appareils respiratoires isolants (A.R.I.), sable ou terre meuble,
+                                            combinaison, cagoule, casque, etc.</i></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-11 col-sm-12">
+                                        {{#if result.one}}
+                                            <input type="hidden" name="_id" value="{{result.one._id}}"/>
+                                        {{/if}}
+                                        <a class="btn btn-primary" href="/formaddregistreetape8" role="button">suivant</a>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </section>
+    </div><!-- /.col -->
+
+    </div><!-- /.row -->
+    </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}
+

@@ -1,0 +1,161 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                {{translation.WELCOME_MSG}} {{translation.SOFT_NAME}}
+            </h1>
+            <br/>
+            <h2>{{translation.TITLE_MSG}}</h2>
+
+            <h2 class="center-block">
+                {{translation.DASHBOARD_TITLE}}
+            </h2>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-home"></i> Accueil</a></li>
+            </ol>
+        </section>
+
+        <!--section>
+          <img src="img/logo-otf-6-1_280px.png" class="img-responsive" alt="logo OTF²">
+        </section-->
+        <!-- Main content -->
+        <section class="content">
+            <!-- ================= widgets accueil ======================= -->
+            <!-- First row of dashboard -->
+
+            <div class="row">
+                {{#each result.functionalities}}
+                    {{#compare @index '3' operator='<'}}
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <a href="{{this.action_name}}">
+                                <div class="info-box bg-{{this.color}}"
+                                     onmouseover="activateBoxOver(this, '{{this.color}}');"
+                                     onmouseout="deactivateBoxOver(this, '{{this.color}}');">
+                                    <span class="info-box-icon"><i class="fa {{this.iconfs}} fa-1x"
+                                                                   aria-hidden="true"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">{{{this.title}}}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{/compare}}
+                {{/each}}
+            </div>
+            <div class="row">
+                {{#each result.functionalities}}
+                    {{#compare @index '2' operator='>'}}
+                        {{#compare @index '6' operator='<'}}
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <a href="{{this.action_name}}">
+                                    <div class="info-box bg-{{this.color}}"
+                                         onmouseover="activateBoxOver(this, '{{this.color}}');"
+                                         onmouseout="deactivateBoxOver(this, '{{this.color}}');">
+                                        <span class="info-box-icon"><i class="fa {{this.iconfs}} fa-1x"
+                                                                       aria-hidden="true"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">{{{this.title}}}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/compare}}
+                    {{/compare}}
+                {{/each}}
+            </div>
+
+            <div class="row">
+                {{#each result.functionalities}}
+                    {{#compare @index '5' operator='>'}}
+                        {{#compare @index '9' operator='<'}}
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <a href="{{this.action_name}}">
+                                <div class="info-box bg-{{this.color}}"
+                                     onmouseover="activateBoxOver(this, '{{this.color}}');"
+                                     onmouseout="deactivateBoxOver(this, '{{this.color}}');">
+                                    <span class="info-box-icon"><i class="fa {{this.iconfs}} fa-1x"
+                                                                   aria-hidden="true"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">{{{this.title}}}</span>
+                                    </div>
+                                </div>
+                        </div>
+                        {{/compare}}
+                    {{/compare}}
+                {{/each}}
+            </div>
+
+            <div class="row">
+                {{#each result.functionalities}}
+                    {{#compare @index '8' operator='>'}}
+                        {{#compare @index '12' operator='<'}}
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <a href="{{this.action_name}}">
+                                    <div class="info-box bg-{{this.color}}"
+                                         onmouseover="activateBoxOver(this, '{{this.color}}');"
+                                         onmouseout="deactivateBoxOver(this, '{{this.color}}');">
+                                        <span class="info-box-icon"><i class="fa {{this.iconfs}} fa-1x"
+                                                                       aria-hidden="true"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">{{{this.title}}}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/compare}}
+                    {{/compare}}
+                {{/each}}
+            </div>
+            <div class="row">
+                {{#each result.functionalities}}
+                    {{#compare @index '11' operator='>'}}
+                        {{#compare @index '15' operator='<'}}
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <a href="{{this.action_name}}">
+                                    <div class="info-box bg-{{this.color}}"
+                                         onmouseover="activateBoxOver(this, '{{this.color}}');"
+                                         onmouseout="deactivateBoxOver(this, '{{this.color}}');">
+                                            <span class="info-box-icon"><i class="fa {{this.iconfs}} fa-1x"
+                                                                           aria-hidden="true"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">{{{this.title}}}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/compare}}
+                    {{/compare}}
+                {{/each}}
+            </div>
+
+            <div class="box-body">
+              <h5>
+                  {{#compare state 'connected' operator="=="}}
+              <p class="text-success">CONNECTED</p>
+              <p class="text-success">Bienvenue {{user}}, {{message}}</p>
+                  {{/compare}}
+                {{#compare state 'not_connected' operator="=="}}
+              <p class="text-danger">NOT CONNECTED</p>
+                  {{/compare}}
+                {{#compare state 'logout' operator="=="}}
+                      <p class="text-danger">Logout</p>
+
+                      <p class="text-danger">{{message}}</p>
+                  {{/compare}}
+              </h5>
+            </div>
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}

@@ -1,0 +1,450 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <script>
+        //<![CDATA[
+        $(document).ready(function(){
+            $("[data-mask]").inputmask();
+        });
+
+        //fonction ajout de champs
+        $(document).ready(function() {
+            var maxField = 20; //limitation des elements
+            var x = 1; //Initial field counter is 1
+
+            //ajout de 1er intervenant
+            var addButtonint = $('.add_buttonint'); //bouton ajouter
+            var wrapperint = $('.field_wrapperint'); //Input field wrapper
+            var fieldHTMLint = '                                            <input class="form-control" type="hidden" name="categorie_salarie[]" value="Personnel 1er intervention" />\n' +
+                    '                                            <div class="col-sm-3 col-sm-offset-2">\n' +
+                    '                                                <input class="form-control" placeholder="Nom" type="text" name="nom[]" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="col-sm-3">\n' +
+                    '                                                <input class="form-control" placeholder="prenom" type="text" name="prenom[]" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="col-sm-4">\n' +
+                    '                                                <input class="form-control" placeholder="poste" type="text" name="emplacement_poste_travail[]" title="Ce champs est requis" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.emplacement_poste_travail}}{{/if}}" required="required"/>\n' +
+                    '                                            </div>'; //New input field html
+            $(addButtonint).click(function () { //Once add button is clicked
+                if (x < maxField) { //Check maximum number of input fields
+                    x++; //Increment field counter
+                    $(wrapperint).append(fieldHTMLint); // Add field html
+                }
+            });
+
+            //ajout equipier
+            var addButton2equip = $('.add_button2equip'); //bouton ajouter
+            var wrapper2equip = $('.field_wrapper2equip'); //Input field wrapper
+            var fieldHTML2equip = '<input class="form-control" type="hidden" name="categorie_salarie[]" value="personnel 2e inter equipier" />\n' +
+                    '                                        <div class="col-sm-3 col-sm-offset-2">\n' +
+                    '                                            <input class="form-control" placeholder="Nom" type="text" name="nom[]" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                        </div>\n' +
+                    '                                        <div class="col-sm-3">\n' +
+                    '                                            <input class="form-control" placeholder="prenom" type="text" name="prenom[]" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                        </div>\n' +
+                    '                                        <div class="col-sm-4">\n' +
+                    '                                                <input class="form-control" placeholder="poste" type="text" name="emplacement_poste_travail[]" title="Ce champs est requis" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.emplacement_poste_travail}}{{/if}}" required="required"/>\n' +
+                    '                                        </div>';
+            $(addButton2equip).click(function () { //Once add button is clicked
+                if (x < maxField) { //Check maximum number of input fields
+                    x++; //Increment field counter
+                    $(wrapper2equip).append(fieldHTML2equip); // Add field html
+                }
+            });
+
+            //ajout guide evacuation
+            var addButtonevac = $('.add_buttonevac'); //bouton ajouter
+            var wrapperevac = $('.field_wrapperevac'); //Input field wrapper
+            var fieldHTMLevac = '<input class="form-control" type="hidden" name="categorie_salarie[]" value="guide d evacuation" />\n' +
+                    '                                            <div class="col-sm-3 col-sm-offset-2">\n' +
+                    '                                                <input class="form-control" placeholder="Nom" type="text" name="nom[]" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="col-sm-3">\n' +
+                    '                                                <input class="form-control" placeholder="prenom" type="text" name="prenom[]" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="col-sm-4">\n' +
+                    '                                                <input class="form-control" placeholder="poste" type="text" name="emplacement_poste_travail[]" title="Ce champs est requis" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.emplacement_poste_travail}}{{/if}}" required="required"/>\n' +
+                    '                                            </div>';
+            $(addButtonevac).click(function () { //Once add button is clicked
+                if (x < maxField) { //Check maximum number of input fields
+                    x++; //Increment field counter
+                    $(wrapperevac).append(fieldHTMLevac); // Add field html
+                }
+            });
+
+            //ajout serre file
+            var addButtonser = $('.add_buttonser'); //bouton ajouter
+            var wrapperser = $('.field_wrapperser'); //Input field wrapper
+            var fieldHTMLser = '<input class="form-control" type="hidden" name="categorie_salarie[]" value="serre file d evacuation" />\n' +
+                    '                                            <div class="col-sm-3 col-sm-offset-2">\n' +
+                    '                                                <input class="form-control" placeholder="Nom" type="text" name="nom[]" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="col-sm-3">\n' +
+                    '                                                <input class="form-control" placeholder="prenom" type="text" name="prenom[]" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="col-sm-4">\n' +
+                    '                                                <input class="form-control" placeholder="poste" type="text" name="emplacement_poste_travail[]" title="Ce champs est requis" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.emplacement_poste_travail}}{{/if}}" required="required"/>\n' +
+                    '                                            </div>';
+            $(addButtonser).click(function () { //Once add button is clicked
+                if (x < maxField) { //Check maximum number of input fields
+                    x++; //Increment field counter
+                    $(wrapperser).append(fieldHTMLser); // Add field html
+                }
+            });
+
+            //ajout secouriste
+            var addButtonsec = $('.add_buttonsec'); //bouton ajouter
+            var wrappersec = $('.field_wrappersec'); //Input field wrapper
+            var fieldHTMLsec = '<input class="form-control" type="hidden" name="categorie_salarie[]" value="secouriste" />\n' +
+                    '                                            <div class="col-sm-3 col-sm-offset-2">\n' +
+                    '                                                <input class="form-control" placeholder="Nom" type="text" name="nom[]" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="col-sm-3">\n' +
+                    '                                                <input class="form-control" placeholder="prenom" type="text" name="prenom[]" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required" autofocus/>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="col-sm-4">\n' +
+                    '                                                <input class="form-control" placeholder="poste" type="text" name="emplacement_poste_travail[]" title="Ce champs est requis" value="{{#if
+                            result}}{{result.ServiceSecuriteIncendie.emplacement_poste_travail}}{{/if}}" required="required"/>\n' +
+                    '                                            </div>';
+            $(addButtonsec).click(function () { //Once add button is clicked
+                if (x < maxField) { //Check maximum number of input fields
+                    x++; //Increment field counter
+                    $(wrappersec).append(fieldHTMLsec); // Add field html
+                }
+            });
+        });
+    </script>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Création du registre incendie
+            </h1>
+            <h2>
+                Etape 4 :
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                    </div>
+                </div>
+            </h2>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- About Me Box -->
+                    <div class="box box-primary">
+                        <div class="box-body">
+
+                            <form class="form-horizontal" role="form" method="POST" accept-charset="utf-8" action="{{#if result.one}}/formaddregistreetape4{{/if}}">
+                                <div class="col-xs-12 col-sm-12">
+                                    <h3>Etape - Perosnnel - service sécurité incendie </h3>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Représentant légal</label>
+                                    <input class="form-control" type="hidden" name="categorie_salarie" value="representant legal" />
+                                    <div class="col-sm-1">
+                                        <select class="form-control" id="titre" name="titre" required="required">
+                                            <option value="" disabled selected></option>
+                                            <option value="Mr" {{#if result.one}}{{#compare result.one.titre 'Mr' operator='=='}}selected{{/compare}}{{/if}}>Mr</option>
+                                            <option value="Mme" {{#if result.one}}{{#compare result.one.titre 'Mme' operator='=='}}selected{{/compare}}{{/if}}>Mme</option>
+                                            <option value="Dr" {{#if result.one}}{{#compare result.one.titre 'Dr' operator='=='}}selected{{/compare}}{{/if}}>Dr</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" placeholder="Nom" type="text" name="nom" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" placeholder="Prenom" type="text" name="prenom" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required"/>
+                                    </div>
+
+                                    <label for="inputName" class="col-sm-2 control-label">Chargé de la sécurité</label>
+                                    <input class="form-control" type="hidden" name="categorie_salarie" value="charge de la securite" />
+                                    <div class="col-sm-1">
+                                        <select class="form-control" id="titre" name="titre" required="required">
+                                            <option value="" disabled selected></option>
+                                            <option value="Mr" {{#if result.one}}{{#compare result.one.titre 'Mr' operator='=='}}selected{{/compare}}{{/if}}>Mr</option>
+                                            <option value="Mme" {{#if result.one}}{{#compare result.one.titre 'Mme' operator='=='}}selected{{/compare}}{{/if}}>Mme</option>
+                                            <option value="Dr" {{#if result.one}}{{#compare result.one.titre 'Dr' operator='=='}}selected{{/compare}}{{/if}}>Dr</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" placeholder="Nom" type="text" name="nom" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" placeholder="Prenom" type="text" name="prenom" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required"/>
+                                    </div>
+                                    <label for="inputName" class="col-sm-2 control-label">Chargé du service incendie</label>
+                                    <input class="form-control" type="hidden" name="categorie_salarie" value="charge du service incendie" />
+                                    <div class="col-sm-1">
+                                        <select class="form-control" id="titre" name="titre" required="required">
+                                            <option value="" disabled selected></option>
+                                            <option value="Mr" {{#if result.one}}{{#compare result.one.titre 'Mr' operator='=='}}selected{{/compare}}{{/if}}>Mr</option>
+                                            <option value="Mme" {{#if result.one}}{{#compare result.one.titre 'Mme' operator='=='}}selected{{/compare}}{{/if}}>Mme</option>
+                                            <option value="Dr" {{#if result.one}}{{#compare result.one.titre 'Dr' operator='=='}}selected{{/compare}}{{/if}}>Dr</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" placeholder="Nom" type="text" name="nom" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" placeholder="Prenom" type="text" name="prenom" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required"/>
+                                    </div>
+                                    <label for="inputName" class="col-sm-2 control-label">Chargé général de l'évacuation</label>
+                                    <input class="form-control" type="hidden" name="categorie_salarie[]" value="carge general de l evacuation" />
+                                    <div class="col-sm-1">
+                                        <select class="form-control" id="titre" name="titre" required="required">
+                                            <option value="" disabled selected></option>
+                                            <option value="Mr" {{#if result.one}}{{#compare result.one.titre 'Mr' operator='=='}}selected{{/compare}}{{/if}}>Mr</option>
+                                            <option value="Mme" {{#if result.one}}{{#compare result.one.titre 'Mme' operator='=='}}selected{{/compare}}{{/if}}>Mme</option>
+                                            <option value="Dr" {{#if result.one}}{{#compare result.one.titre 'Dr' operator='=='}}selected{{/compare}}{{/if}}>Dr</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" placeholder="Nom" type="text" name="nom" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" placeholder="Prenom" type="text" name="prenom" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-12">
+                                    <h3>Personnels chargés de l'intervention </h3>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <div class="col-sm-2" style="text-align: right">
+                                            <label for="inputName">Personnel 1er intervention</label>
+                                        </div>
+                                        <div class="field_wrapperint">
+                                            <input class="form-control" type="hidden" name="categorie_salarie[]" value="Personnel 1er intervention" />
+                                            <div class="col-sm-3">
+                                                <input class="form-control" placeholder="Nom" type="text" name="nom[]" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <input class="form-control" placeholder="prenom" type="text" name="prenom[]" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" placeholder="poste" type="text" name="emplacement_poste_travail[]" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.emplacement_poste_travail}}{{/if}}" required="required"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2" style="text-align: right">
+                                        <label for="inputName">Ajouter personnel</label>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="javascript:void(0);" class="add_buttonint" title="Ajouter personnel"><button type="button" class="btn btn-primary">Ajouter</button></a>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                        <p><i>leur nombre dépend de l’effectif de l’établissement, de la surface des locaux, du nombre de niveaux...</i></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <div class="col-sm-2" style="text-align: right">
+                                            <label for="inputName">Personnel 2e intervention <br/> Chef d'équipe</label>
+
+                                            <input class="form-control" type="hidden" name="categorie_salarie" value="chef d equipe" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" placeholder="Nom" type="text" name="nom" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" placeholder="prenom" type="text" name="prenom" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required" autofocus/>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input class="form-control" placeholder="poste" type="text" name="emplacement_poste_travail" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.emplacement_poste_travail}}{{/if}}" required="required"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <div class="col-sm-2" style="text-align: right">
+                                            <label for="inputName">Personnel 2e intervention <br/> adjoint au chef d'équipe</label>
+
+                                            <input class="form-control" type="hidden" name="categorie_salarie" value="adjoint au chef d equuipe" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" placeholder="Nom" type="text" name="nom" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" placeholder="prenom" type="text" name="prenom" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required" autofocus/>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input class="form-control" placeholder="poste" type="text" name="emplacement_poste_travail" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.emplacement_poste_travail}}{{/if}}" required="required"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                <div class="col-xs-12 col-sm-12">
+                                    <div class="col-sm-2" style="text-align: right">
+                                        <label for="inputName">Personnel 2e intervention Equipiers</label>
+                                    </div>
+                                    <div class="field_wrapper2equip">
+
+                                        <input class="form-control" type="hidden" name="categorie_salarie[]" value="personnel 2e inter equipier" />
+                                        <div class="col-sm-3">
+                                            <input class="form-control" placeholder="Nom" type="text" name="nom[]" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" placeholder="prenom" type="text" name="nom[]" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required" autofocus/>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input class="form-control" placeholder="poste" type="text" name="emplacement_poste_travail[]" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.emplacement_poste_travail}}{{/if}}" required="required"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" style="text-align: right">
+                                    <label for="inputName">Ajouter Equipier</label>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a href="javascript:void(0);" class="add_button2equip" title="Ajouter equipier"><button type="button" class="btn btn-primary">Ajouter</button></a>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                    <p><i>leur nombre dépend de l’effectif de l’établissement et du délai d’intervention des sapeurs pompiers.</i></p>
+                                </div>
+                            </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <div class="col-sm-2" style="text-align: right">
+                                            <label for="inputName">Guide d'évacuation</label>
+                                        </div>
+                                        <div class="field_wrapperevac">
+                                            <input class="form-control" type="hidden" name="categorie_salarie[]" value="guide d evacuation" />
+                                            <div class="col-sm-3">
+                                                <input class="form-control" placeholder="Nom" type="text" name="nom[]" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <input class="form-control" placeholder="prenom" type="text" name="prenom[]" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" placeholder="poste" type="text" name="emplacement_poste_travail[]" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.emplacement_poste_travail}}{{/if}}" required="required"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2" style="text-align: right">
+                                        <label for="inputName">Ajouter personnel</label>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="javascript:void(0);" class="add_buttonevac" title="Ajouter personnel"><button type="button" class="btn btn-primary">Ajouter</button></a>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                        <p><i>1 guide-file et 1 serre-file sont à prévoir pour 25 personnes.
+                                            Il est souhaitable de compléter les consignes et la signalisation balisant les cheminements empruntés par le personnel par des
+                                            plans indiquant les moyens d’accès des locaux et les cheminements pour l’évacuation. Il est recommandé d’afficher un plan
+                                            d’évacuation à chaque niveau de bâtiment.</i></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <div class="col-sm-2" style="text-align: right">
+                                            <label for="inputName">Serres-files d'évacuation</label>
+                                        </div>
+                                        <div class="field_wrapperser">
+
+                                            <input class="form-control" type="hidden" name="categorie_salarie[]" value="serre file d evacuation" />
+                                            <div class="col-sm-3">
+                                                <input class="form-control" placeholder="Nom" type="text" name="nom[]" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <input class="form-control" placeholder="prenom" type="text" name="prenom[]" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" placeholder="poste" type="text" name="emplacement_poste_travail[]" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.emplacement_poste_travail}}{{/if}}" required="required"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2" style="text-align: right">
+                                        <label for="inputName">Ajouter personnel</label>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="javascript:void(0);" class="add_buttonser" title="Ajouter personnel"><button type="button" class="btn btn-primary">Ajouter</button></a>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                        <p><i>1 guide-file et 1 serre-file sont à prévoir pour 25 personnes.
+                                            Il est souhaitable de compléter les consignes et la signalisation balisant les cheminements empruntés par le personnel par des
+                                            plans indiquant les moyens d’accès des locaux et les cheminements pour l’évacuation. Il est recommandé d’afficher un plan
+                                            d’évacuation à chaque niveau de bâtiment.</i></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <div class="col-sm-2" style="text-align: right">
+                                            <label for="inputName">Secouriste</label>
+                                        </div>
+                                        <div class="field_wrappersec">
+
+                                            <input class="form-control" type="hidden" name="categorie_salarie[]" value="secouriste" />
+                                            <div class="col-sm-3">
+                                                <input class="form-control" placeholder="Nom" type="text" name="nom[]" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.nom}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <input class="form-control" placeholder="prenom" type="text" name="nom[]" value="{{#if result}}{{result.ServiceSecuriteIncendie.RegistreUniqueDuPersonnel_extId.prenom}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" placeholder="poste" type="text" name="emplacement_poste_travail[]" title="Ce champs est requis" value="{{#if result}}{{result.ServiceSecuriteIncendie.emplacement_poste_travail}}{{/if}}" required="required"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2" style="text-align: right">
+                                        <label for="inputName">Ajouter personnel</label>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a href="javascript:void(0);" class="add_buttonsec" title="Ajouter personnel"><button type="button" class="btn btn-primary">Ajouter</button></a>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                        <p><i>leur nombre dépend de la dangerosité des travaux effectués dans l’établissement (art . 13 du décret 85-603 du 10 juin 1985
+                                            modifié).</i></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <a class="col-sm-offset-10 col-sm-12">
+                                        {{#if result.one}}
+                                            <input type="hidden" name="_id" value="{{result.one._id}}"/>
+                                        {{/if}}
+                                        <!--<a class="btn btn-primary" href="/formaddregistreetape2" role="button">suivant</a>-->
+                                        <input class="btn btn-primary" type="submit" value="Envoyer le formulaire">
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div><!-- /.box-body -->
+    </div><!-- /.box -->
+    </div><!-- /.col -->
+
+    </div><!-- /.row -->
+    </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}
+
