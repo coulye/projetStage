@@ -1,0 +1,1 @@
+{"options":{"autoIndexId":true},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"iziprev.accounts"},{"v":1,"unique":true,"key":{"login":1},"name":"login_1","ns":"iziprev.accounts","background":true}]}

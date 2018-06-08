@@ -1,0 +1,1156 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <script>
+        function affichageDiv(liste) {
+            $("#liste option:selected").each(function () {
+                var d = document.getElementById($(this).val());
+                if (d.style.display = "none") {
+                    d.style.display = "block";
+                }
+
+            });
+        }
+    </script>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Tableau de classement des risques professionnels
+            </h1>
+            <br>
+            <h2 class="center-block">
+
+            </h2>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-home"></i> Accueil</a></li>
+            </ol>
+        </section>
+
+        <!--section>
+          <img src="img/logo-otf-6-1_280px.png" class="img-responsive" alt="logo OTF²">
+        </section-->
+        <!-- Main content -->
+        <section class="content">
+            <!-- ================= widgets accueil ======================= -->
+            <!-- First row of dashboard -->
+
+
+            <form class="form-horizontal" role="form" method="POST" accept-charset="utf-8"
+                  action="/formaddregistreetape1">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            <label>selection du risque</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="liste" onchange="javascript:affichageDiv(this)">
+                                <option value="" disabled selected></option>
+                                <option value="1">Risques de chute de plain-pied</option>
+                                <option value="2">Risques de chute de hauteur</option>
+                                <option value="3">Risques liés à la manutention manuelle</option>
+                                <option value="4">Risques liés à la manutention mécanique</option>
+                                <option value="5">Risques liés à la circulation et aux déplacements</option>
+                                <option value="6">Risques liés aux agents biologiques</option>
+                                <option value="7">Risques liés aux cancers professionnels</option>
+                                <option value="8">Risques et nuisances liés aux bruits</option>
+                                <option value="9">Risques liés aux agents chimiques</option>
+                                <option value="10">Risques</option>
+                                <option value="11">Risques</option>
+                            </select><br><br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-12" id="1" style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Evaluation des risques</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>L’évaluation des risques a pour but d’identifier les situations propices au risque de
+                                    chutes de plain-pied, de manière à définir des actions de prévention permettant de
+                                    traiter au mieux les causes et contextes favorables à la survenue des
+                                    accidents. </p>
+                                <P>Si l’implication des salariés dans l’évaluation des risques est toujours préconisée,
+                                    elle est particulièrement nécessaire s’agissant des chutes de plain-pied. Les causes
+                                    de ces accidents sont rarement manifestes et leurs circonstances de survenue sont
+                                    étroitement liées au contexte global des tâches à réaliser. En interrogeant les
+                                    opérateurs, il est possible d’identifier les situations à risque les plus
+                                    fréquentes.</P>
+                                <P>Il s’agit de recueillir auprès des salariés les difficultés rencontrées dans leurs
+                                    déplacements, les contraintes d’espace lors des manipulations d’objets, leur
+                                    mobilité liée à l’utilisation d’équipements… La mise en évidence de certaines
+                                    situations accidentogènes permet également de les sensibiliser au risque de chutes
+                                    de plain-pied de manière réaliste ; elle favorise l’identification d’autres
+                                    situations à risques par les autres salariés.</P>
+                                <P>Cette démarche doit être globale et ouverte. Elle peut néanmoins s’appuyer sur 3 axes
+                                    de réflexion :</P>
+                                <P>
+                                <ul>
+                                    <LI>L’espace de travail : zones limitant le mouvement, déplacement nécessité par les
+                                        tâches, sols pollués glissants, espaces encombrés…
+                                    </LI>
+                                    <li>L’ambiance physique : ambiance diminuant les capacités de concentration ou de
+                                        réaction au risque (bruit, éclairage, température…)
+                                    </li>
+                                    <li>Les tâches et l’organisation du travail : interférences entre activités,
+                                        activités simultanées (tâches de contrôle / tâches de fabrication…), urgence,
+                                        déplacements évitables…
+                                    </li>
+                                </ul>
+                                </P>
+                                <p>La réflexion concerne également les espaces extérieurs, y compris en dehors de
+                                    l’enceinte de l’entreprise dès lors que les salariés ont à y évoluer pour leur
+                                    activité. Les situations « exceptionnelles » sont également à traiter :
+                                    interventions hors production (maintenance, nettoyage, livraison…), surcharges
+                                    ponctuelles d’activité…</p>
+                                <p>L’analyse systématique des accidents et des presqu’accidents liés aux chutes de
+                                    plain-pied est un autre élément important. Elle doit s’inscrire dans le cadre d’une
+                                    démarche continue et itérative. Elle permet de mieux comprendre et de mieux
+                                    percevoir la complexité de ces accidents mais également de rendre plus visible les
+                                    combinaisons des facteurs impliqués, dont des facteurs environnementaux et
+                                    organisationnels. </p>
+                                <p>Cette analyse participative, menée sur des exemples concrets permet de prendre en
+                                    compte les spécificités de l’entreprise, enrichit la démarche d’évaluation et
+                                    favorise la sensibilisation des salariés.</p>
+                                <p>Les résultats de l’évaluation des risques doivent être transcrits dans le document
+                                    unique (article R. 4121-1 du Code du travail). Au-delà du respect de l’obligation
+                                    réglementaire, ce document doit permettre à l’employeur d’élaborer un plan d’action
+                                    définissant les mesures de prévention appropriées aux risques identifiés. Ces
+                                    actions seront spécifiques aux situations de travail et donc à chaque
+                                    entreprise.</p>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Cadre réglementaire et normatif</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Le traitement des risques de chutes de plain-pied est concerné au même titre que
+                                    l’ensemble des risques professionnels par les dispositions réglementaires générales
+                                    de prévention (articles L. 4121-1 à 5 du Code du travail).
+                                </p>
+                                <p>Ces dispositions sont complétées par certaines obligations incombant au chef
+                                    d’établissement ou au maître d’ouvrage lors de la conception des lieux de travail
+                                    contribuant directement ou indirectement à la prévention de ces accidents. Il s’agit
+                                    entre autres de dispositions relatives :
+                                <ul>
+                                    <li>à la sécurité des lieux de travail (articles R. 4214-3 à R. 4214-25) :
+                                        caractéristiques des bâtiments, des voies de circulation et accès, des quais et
+                                        rampes de chargement, aménagement des postes de travail, signalisation de
+                                        sécurité.
+                                    </li>
+                                    <li>à l’éclairage des lieux de travail (articles R. 4223-1 à R. 4223-12) ;</li>
+                                    <li>à l’évacuation du personnel (articles R. 4227-4 à R. 4227-14) ;</li>
+                                    <li>à la formation à la sécurité (article R. 4141-11).</li>
+                                </ul>
+                                </p>
+                                <p>La question de la glissance des sols est abordée dans des recommandations et textes
+                                    normatifs :
+                                <ul>
+                                    <li>Le Comité Technique National des Services, Commerces et Industries de
+                                        l’alimentation du réseau prévention a adopté en 2011 la recommandation R462
+                                        intitulée « Bien choisir les revêtements de sol lors de la
+                                        conception/rénovation/extension des locaux de fabrication de produits
+                                        alimentaires » .
+                                    </li>
+                                    <li>La CNAMTS, avec le concours de l’INRS, propose un guide et une liste de
+                                        revêtements de sols adaptés aux locaux de fabrication de produits alimentaires.
+                                    </li>
+                                    <li>La norme XP P05-011 traite des « Revêtements de sol - Classement des locaux en
+                                        fonction de leur résistance à la glissance ».
+                                    </li>
+                                </ul>
+                                </p>
+                                <p>La question de la glissance des chaussures est traitée dans différentes normes dont :
+                                <ul>
+                                    <li>NF EN ISO 20345 - Équipement de protection individuelle - Chaussures de
+                                        sécurité
+                                    </li>
+                                    <li>NF EN ISO 13287 - Équipement de protection individuelle - Chaussures - Méthode
+                                        d'essai pour la résistance au glissement.
+                                    </li>
+                                </ul>
+                                </p>
+                            </div>
+
+
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="2" style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Situations de travail à risque</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Les chutes peuvent survenir depuis :
+                                <ul>
+                                    <li>des toitures, charpentes, terrasses de bâtiments…</li>
+                                    <li>des moyens d’accès à des zones en surélévation : échelles, escaliers,
+                                        passerelles…
+                                    </li>
+                                    <li>des pylônes ou d’autres équipements de travail (échafaudage, camion citerne…).
+                                    </li>
+                                </ul>
+                                </p>
+
+                                <p>Le travail à proximité d’une tranchée, d’une fouille ou d’une falaise, bien que
+                                    n’étant pas à proprement parler un travail en hauteur, présente les mêmes
+                                    risques.</p>
+                                <p>Les chutes depuis des hauteurs qui peuvent être considérées comme relativement
+                                    faibles ne sont pas sans danger : en effet, chaque année, de nombreux accidents du
+                                    travail sont dus à des chutes depuis des échelles et des escabeaux.</p>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Conception des lieux de travail</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Parmi les caractéristiques des bâtiments abritant des locaux de travail, plusieurs
+                                    dispositions du Code du travail sont à considérer du point de vue de la sécurité
+                                    vis-à-vis des chutes de hauteur. Elles portent sur :
+                                <ul>
+                                    <li>les passerelles, planchers en encorbellement, plates-formes en surélévation,
+                                        ainsi que leurs moyens d'accès (article R. 4224-5),
+                                    </li>
+                                    <li>les puits, trappes et ouvertures de descente (article R. 4224-5),</li>
+                                    <li>les cuves, bassins et réservoirs (article R. 4224-7),</li>
+                                    <li>les toitures en matériaux réputés fragiles, en prévision des interventions
+                                        futures (article R. 4224-8),
+                                    </li>
+                                    <li>les parties vitrées, en prévision des opérations de nettoyage (article R.
+                                        4214-2),
+                                    </li>
+                                    <li>les ouvrants en élévation ou en toiture (article R. 4214-5).</li>
+                                </ul>
+                                </p>
+                                <p>S’il subsiste des zones de danger, qu’il n’a pas été techniquement possible de
+                                    protéger, l’employeur prend toutes dispositions pour que seuls les travailleurs
+                                    autorisés à cet effet puissent y accéder et les signale de manière visible (articles
+                                    R. 4224-4 et R. 4224-20).</p>
+                                <p> Après la construction ou l’aménagement d’un bâtiment, il appartient au maître
+                                    d’ouvrage de remettre au chef d’établissement un dossier de maintenance des lieux de
+                                    travail, dans lequel figurent notamment les solutions retenues au regard des
+                                    caractéristiques ci-dessus. La protection collective doit y être privilégiée dans
+                                    tous les cas. Ce dossier peut faire partie du dossier d’intervention ultérieure sur
+                                    l’ouvrage à remettre par le coordonnateur SPS s’il y eu pluralité d’intervenants
+                                    pour les travaux nécessitant son intervention (articles R. 4532-95 et R.
+                                    4532-96).</p>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Interdictions</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Par ailleurs, d’une manière générale, il est interdit :
+                                <ul>
+                                    <li>d’utiliser des échelles, escabeaux et marchepieds comme poste de travail. Il ne
+                                        peut y être dérogé qu’en cas d'impossibilité technique de recourir à un
+                                        équipement assurant la protection collective des travailleurs ou lorsque
+                                        l'évaluation du risque a établi que ce risque est faible et qu'il s'agit de
+                                        travaux de courte durée ne présentant pas un caractère répétitif (article R.
+                                        4323-63) ;
+                                    </li>
+                                    <li>de recourir aux techniques d’accès et de positionnement au moyen de cordes pour
+                                        constituer un poste de travail. Il ne peut y être dérogé qu’en cas
+                                        d’impossibilité technique de faire appel à des équipements assurant la
+                                        protection collective des travailleurs ou après évaluation du risque dans les
+                                        conditions prévues à l’article R. 4323-64. Les conditions d’utilisation sont
+                                        alors strictement encadrées (articles R. 4323-89 et R. 4323-90).
+                                    </li>
+                                    <li>de réaliser des travaux en hauteur, quel que soit l’installation ou
+                                        l’équipement, lorsque les conditions météorologiques (vent important, tempête…)
+                                        ou les conditions liées à l’environnement du poste de travail sont susceptibles
+                                        de compromettre la sécurité et la santé des travailleurs (article R. 4323-68).
+                                    </li>
+                                </ul>
+                                </p>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Dispositions spécifiques aux travaux de bâtiment et de génie civil</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>De manière générale, des mesures sont prévues pour éviter des chutes de personnes
+                                    pour toutes les parties de construction dont l’aménagement n’est pas définitivement
+                                    réalisé (articles R. 4534-3 à R. 4534-6 et R. 4534-84) :
+                                <ul>
+                                    <li>Pobligation de signalisation avec interdiction d’accès au moyen de dispositifs
+                                        matériels,
+                                    </li>
+                                    <li>protection des ouvertures donnant sur le vide, des puits, galeries inclinées,
+                                        trémies par des garde-corps temporaires, planchers provisoires,
+                                    </li>
+                                    <li>mise en place de garde-corps rampants provisoires sur les volées d’escalier non
+                                        munies de leurs rampes définitives…
+                                    </li>
+                                </ul>
+                                </p>
+                                <p>Pour les travaux en hauteur, le Code du travail envisage des matériels particuliers
+                                    dénommés plates-formes de travail et passerelles, avec des spécifications propres
+                                    (articles R. 4534-74 à R. 4534-84).</p>
+                                <p>Les travaux sur les toitures sont également soumis à un ensemble de dispositions
+                                    (articles R. 4534-85 à R. 4534-94).</p>
+                                <p>Des mesures particulières de vérification (matériel, engins, installations et
+                                    dispositifs de protection de toute nature utilisés sur un chantier) doivent être
+                                    prises par une personne compétente à leur mise ou leur remise en service. Un
+                                    registre d’observations relatives à l’état des matériels doit exister sur le
+                                    chantier (articles R. 4534-15 à R. 4534-20).</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="3" style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Réglementation</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>En matière de santé et sécurité au travail, la réglementation française a intégré des
+                                    règles visant à prévenir les risques liés à l’activité physique. Il s’agit de
+                                    prévenir les conséquences des tensions physiques liées, par exemple, aux postures de
+                                    travail contraignantes, aux efforts prolongés ou brutaux, aux gestes répétitifs ou
+                                    encore aux effets des modifications de l’organisation du travail.</p>
+                                <p>De manière générale, l’article L. 4121-1 du Code du travail impose à l’employeur de
+                                    prendre les mesures nécessaires pour assurer la sécurité et protéger la santé
+                                    physique et mentale des travailleurs. Ces mesures comprennent, entre autres, des
+                                    actions de prévention des risques professionnels et de la pénibilité au travail.</p>
+                                <p>C’est l’évaluation des risques qui déterminera les différents types d’activités ou de
+                                    postes qui sont susceptibles de provoquer des contraintes physiques pour le salarié.
+                                    De cette évaluation découleront les actions de prévention à mettre en œuvre.</p>
+                                <p>Les actions de prévention des risques trouvent leur fondement sur les 9 principes
+                                    généraux de prévention (article L. 4121-2 du Code du travail).</p>
+                                <p>Les mesures et les moyens de prévention prévus par la réglementation pour préserver
+                                    la santé et la sécurité des salariés exposés à des activités physiques passent par
+                                    des règles particulières liées à certaines activités comme la manutention de charge
+                                    et l’utilisation d’écran de visualisation ou à l’exposition à certains agents
+                                    physiques tels que le bruit ou les vibrations mécaniques.</p>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Expositions aux risques</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Même si ces dernières années la tertiarisation a pris le pas sur les activités
+                                    industrielles et agricoles, la proportion de salariés confrontés à un travail
+                                    physique reste importante. Ainsi, l’enquête SUMER de 2010 indique que près de 40 %
+                                    des salariés se disent exposés à au moins une contrainte physique intense (DARES,
+                                    2013a). Cette proportion était plus élevée au début des années 90 (46 %), mais est
+                                    relativement stable depuis le début des années 2000 (DARES, 2012)
+                                </p>
+                                <p>Les secteurs les plus touchés sont la construction (62 %) et l'agriculture (54 %)
+                                    mais sont aussi concernés le commerce, les transports (45 %) et l'industrie (41 %).
+                                    Les contraintes posturales deux heures ou plus par semaine concernent 20 % des
+                                    salariés, mais près de la moitié des salariés de la construction et plus d’un tiers
+                                    des travailleurs de l’agriculture. La position debout ou le piétinement vingt heures
+                                    ou plus par semaine sont très fréquents dans le secteur de la construction (37 %),
+                                    l’industrie et le transport (28 %) et l’agriculture (22 %). Les manutentions
+                                    manuelles dix heures ou plus par semaine concernent 10 % des salariés, 22 % dans le
+                                    secteur de la construction et environ 12 % dans l’agriculture et dans l’industrie
+                                    (DARES, 2013a).</p>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Contrainte physique intense</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Indicateur synthétique prenant en compte : </p>
+                                <ul>
+                                    <li>position debout ou piétinement 20 h ou plus par semaine,</li>
+                                    <li>manutention manuelle de charges 20 h ou plus par semaine,</li>
+                                    <li>gestes répétitifs 10 h ou plus par semaine,</li>
+                                    <li>vibrations transmises aux membres supérieurs 10 h ou plus par semaines,</li>
+                                    <li>contraintes posturales (à genoux, bras en l’air, accroupi, ou en torsion) 2 h ou
+                                        plus par semaine
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="4" style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Exposition au risque</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Les phénomènes dangereux peuvent être qualifiés de manière à faire apparaître la
+                                    nature du dommage potentiel, on parlera alors :
+                                <ul>
+                                    <li>d’écrasement ;</li>
+                                    <li>de cisaillement, de coupure ou de sectionnement ;</li>
+                                    <li>de happement, d’enroulement, d’entraînement, d’engagement ou d’emprisonnement
+                                        ;
+                                    </li>
+                                    <li>de chocs avec des éléments solides ;</li>
+                                    <li>de perforation ou de piqûre ;</li>
+                                    <li>d’abrasion ;</li>
+                                    <li>de choc ou de projection de fluides, notamment sous pression.</li>
+                                </ul>
+                                </p>
+                                <p>Ces phénomènes dangereux sont conditionnés par les facteurs suivants :
+                                <ul>
+                                    <li>forme (éléments coupants, arêtes vives, pièces de forme aigüe) d’éléments
+                                        mobiles ou immobiles ;
+                                    </li>
+                                    <li>disposition qui peut créer des zones d’écrasement, de cisaillement, de
+                                        happement, de perforation ou de piqûre lorsque des éléments sont en mouvement ;
+                                    </li>
+                                    <li>masse et stabilité (énergie potentielle d’éléments qui peuvent se déplacer) ;
+                                    </li>
+                                    <li>masse et vitesse (énergie cinétique d’éléments en mouvement contrôlé ou
+                                        incontrôlé) ;
+                                    </li>
+                                    <li>accélération/décélération ;</li>
+                                    <li>insuffisance de la résistance mécanique qui peut engendrer des ruptures ou des
+                                        éclatements dangereux ;
+                                    </li>
+                                    <li>énergie potentielle d’éléments élastiques (ressorts) ou de liquides ou de gaz
+                                        sous pression ou sous vide ;
+                                    </li>
+                                </ul>
+                                </p>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Prévention du risque</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Le risque mécanique est indissociable de l’utilisation d’un équipement de travail.
+                                    Les
+                                    risques d’accidents du travail doivent être pris en compte dès la conception par un
+                                    ensemble de mesures de prévention : suppression des phénomènes dangereux, mise en
+                                    place
+                                    de protecteurs et de dispositifs de protection… Le concepteur doit non seulement
+                                    prendre
+                                    en compte les conditions normales d’utilisation (installation, production,
+                                    maintenance,
+                                    réglage…), mais également les situations anormales prévisibles.Ce risque est lié
+                                    notamment aux éléments mobiles de transmission (chaînes, courroies, engrenages), aux
+                                    éléments mobiles concourant au travail (un mandrin et son outil), à la mobilité des
+                                    équipements (engins de terrassement), au levage de charges (grues)…</p>
+                                <label>Une obligation réglementaire</label><br>
+                                <p>Comme pour tout autre risque, le fabricant ou le concepteur de machines doit
+                                    respecter
+                                    des exigences essentielles de santé et de sécurité issues de la directive dite «
+                                    Machines » 2006/42/CE et transposées dans le Code du travail en règles de
+                                    conception.</p>
+                                <label>Intégration de la sécurité à toutes les étapes de conception</label>
+                                <p>L'intégration de la sécurité est encore trop souvent traitée en fin de projet, lors
+                                    de la
+                                    réception finale de l'équipement par le client ou un organisme de contrôle. Il est
+                                    alors
+                                    trop tard pour remettre en cause des choix de conception et les mesures prises sont
+                                    obligatoirement correctives, principalement afin de satisfaire le point de vue
+                                    réglementaire. Ces mesures coûtent plus cher et sont généralement moins
+                                    efficaces.</p>
+
+                                <p>Cette intégration doit donc se faire à toutes les étapes du processus de conception :
+                                    de
+                                    la définition du besoin à la réception de l’équipement, en passant par la rédaction
+                                    du
+                                    cahier des charges, les étapes d’avant-projet, et la conception détaillée à la
+                                    réception.</p>
+
+                                <p>Au niveau du cahier des charges l’objectif est d’imposer des spécifications au
+                                    constructeur permettant de procéder à une analyse des risques pertinente pour la
+                                    conception d’un équipement adapté aux besoins et aux exigences de sécurité.</p>
+
+                                <p>Ensuite, lors des phases d’avant-projet de conception détaillée, les mesures de
+                                    prévention appropriées et hiérarchisées sont précisées par une démarche
+                                    progressive.</p>
+                                <p>Des mesures de prévention intrinsèque doivent tout d’abord être recherchées. Elles
+                                    permettent de supprimer le phénomène dangereux ou de réduire les risques associés.
+                                    Ces
+                                    mesures se distinguent par le fait qu’elles sont par conception incluses dans les
+                                    caractéristiques (géométriques, physiques, mécaniques…) de l’équipement et qu’elles
+                                    permettent le plus souvent de réduire le risque à la source.</p>
+
+                                <p>Des moyens de protection doivent être ensuite mis en place pour les différents
+                                    phénomènes
+                                    dangereux qui n’auront pas pu être supprimés lors de l’étape précédente. Il peut
+                                    s’agir
+                                    de protecteurs fixes, de protecteurs mobiles, de dispositifs de protection (barrages
+                                    immatériels, laser, tapis sensibles…), de dispositifs de maintien à distance
+                                    (grille,
+                                    commande bimanuelle…). Bien entendu, le choix doit être fait en fonction :
+                                <ul>
+
+                                    <li>u risque existant : par exemple, un barrage immatériel est inefficace vis à vis
+                                        d’un
+                                        risque de projection,
+                                    </li>
+                                    <li>de la nature des éléments à protéger. Pour les éléments mobiles de transmission,
+                                        l’objectif visé est d’en interdire totalement l’accès. Pour les éléments mobiles
+                                        concourant au travail, ceux-ci peuvent ne pas être complètement inaccessibles,
+                                        en
+                                        raison des opérations qui nécessitent l'intervention de l'opérateur.
+                                    </li>
+
+                                </ul>
+                                </p>
+                                <p>Des mesures de prévention complémentaires sont également à prévoir : elles permettent
+                                    d’éviter des situations dangereuses imminentes (vitesse lente, arrêt d’urgence…) ou
+                                    en
+                                    train de se produire. Par exemple, un dispositif d’arrêt d’urgence n’empêchera pas
+                                    l’accès à une zone dangereuse, mais son activation permettra d’éviter le dommage ou
+                                    de
+                                    limiter sa gravité.</p>
+                                <p>Il faut enfin fournir aux utilisateurs toutes les instructions nécessaires pour que
+                                    l’équipement soit installé, réglé, utilisé, maintenu, démonté correctement. Ces
+                                    instructions doivent être réalistes, en tenant compte du contexte d’emploi et de ses
+                                    contraintes, ainsi que des situations anormales prévisibles. Ces informations
+                                    doivent
+                                    permettre de bien connaître les risques présentés par l’équipement de travail fourni
+                                    et
+                                    ainsi aider les utilisateurs à mettre en œuvre des mesures adaptées, quelles que
+                                    soient
+                                    les opérations à effectuer.</p>
+
+                                <p> Cette démarche s’effectue en plusieurs étapes en s’interrogeant sur les modes
+                                    d’intervention des opérateurs et en identifiant les phénomènes dangereux
+                                    potentiels.</p>
+
+                                <p>Une machine peut présenter des risques lors de son fonctionnement normal si elle a
+                                    été
+                                    mal conçue ou mal implantée. Bien entendu, toute utilisation non conforme à celle
+                                    prévue
+                                    par le concepteur de l’équipement multiplie les risques. Une machine fonctionne
+                                    rarement
+                                    de façon isolée : elle s’intègre dans un processus de production. Certains accidents
+                                    se
+                                    produisent à l’interface entre machines et systèmes d’alimentation et d’évacuation
+                                    des
+                                    produits.</p>
+
+                                <p>Les risques peuvent également varier en fonction du mode de fonctionnement de la
+                                    machine.
+                                    Et pour un même phénomène dangereux, les moyens de protection peuvent également être
+                                    différents selon le mode : par exemple, si dans le cas d’une zone robotisée, il est
+                                    envisageable d’en interdire complètement l’accès en marche normale, il n’en est pas
+                                    de
+                                    même en mode apprentissage.</p>
+
+                                <p>Enfin, un moyen de protection pour un mode de fonctionnement donné peut se révéler
+                                    être
+                                    une source de dommage dans un autre : par exemple, le fait d’éloigner un élément de
+                                    transmission en le plaçant en hauteur afin qu’il soit hors de portée de l’opérateur
+                                    en
+                                    marche normale peut devenir source de danger en cas de maintenance (risque de
+                                    chute).</p>
+                                <p>Signalons que les accidents sur machines se produisent de plus en plus hors
+                                    production,
+                                    lors d’opérations de dépannage, d’entretien, de nettoyage ou de réglage. De même, le
+                                    transport et l’installation des machines sont des phases critiques.</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="5" style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Risques routiers </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Conduire un véhicule fait partie des activités banales de la vie… Mais, pour certains
+                                    salariés, c’est aussi une activité professionnelle à part entière voire leur métier.
+                                    Qu’ils soient commerciaux, chauffeurs routiers ou coursiers, les salariés devant se
+                                    déplacer en véhicule motorisé ou en vélo dans le cadre de leur travail sont
+                                    nombreux. En effet, les clients, les fournisseurs et les sous-traitants peuvent être
+                                    situés loin de l’entreprise. De plus, conduire sur la route entre le lieu de travail
+                                    et le domicile ou le lieu de restauration est une source supplémentaire de risques –
+                                    les accidents dits de trajet.</p>
+                                <p>Comment, dans ces conditions, satisfaire aux exigences professionnelles tout en
+                                    respectant le Code de la route ? Conduire pour le travail expose les salariés
+                                    concernés à des risques supplémentaires que l’employeur doit prendre en compte. Il
+                                    doit mettre en place des mesures de prévention ciblées sur les déplacements, les
+                                    véhicules, les communications et les compétences.</p>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Glissades et chutes de plain-pied</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Trébucher, heurter un objet, faire un faux pas ou glisser sur son lieu de travail
+                                    peut arriver à tout le monde. Ces accidents sont souvent considérés comme bénins et
+                                    inévitables. Pourtant, ils peuvent être aussi graves (séquelles permanentes) que les
+                                    autres accidents du travail – et parfois même fatals.</p>
+                                <p>Un accident de plain-pied par perturbation du mouvement est dû à la conjonction de
+                                    plusieurs facteurs de risques (environnementaux, matériels, individuels ou liés à
+                                    l’organisation du travail) : tâche urgente, espace de travail étroit, inattention…
+                                    Il est donc important d’identifier ces facteurs afin d’aménager l’environnement et
+                                    l’organisation du travail et de sécuriser le salarié.</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="6" style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Réglementation</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Les dispositions réglementaires relatives à la prévention des risques biologiques
+                                    relèvent des articles R. 4421-1 à R. 4427-5 du Code du travail. Elles s’appliquent
+                                    aux établissements dans lesquels la nature de l’activité peut conduire à exposer les
+                                    travailleurs à des agents biologiques.</p>
+
+                                <label>classement des agents biologiques</label>
+
+                                <p>L’article R. 4421-2 du Code du travail définit les agents biologiques comme étant des
+                                    micro-organismes, y compris les micro-organismes génétiquement modifiés, des
+                                    cultures cellulaires et des endoparasites humains susceptibles de provoquer une
+                                    infection, une allergie ou une intoxication.<br>Conformément aux dispositions de
+                                    l’article R. 4421-3 du Code du travail, les agents biologiques sont classés en
+                                    quatre groupes (1, 2, 3, 4), en fonction de la gravité croissante du risque
+                                    d’infection qu’ils représentent pour l’homme. Les agents des groupes 2, 3 et 4 sont
+                                    considérés comme pathogènes. Ce classement ne prend pas en compte les autres risques
+                                    biologiques (immunoallergiques, toxiniques, cancérogènes).</p>
+
+                                <label>Application des principes généraux de prévention</label>
+
+                                <p>Les dispositions du Code du travail spécifiques aux risques biologiques (articles R.
+                                    4421-1 à R. 4424-6) s’appuient, comme pour les autres risques réglementés par le
+                                    Code du travail, sur les principes généraux de prévention énoncés à l’article L.
+                                    4121-2.<br>Ces principes consistent notamment à évaluer les risques, les supprimer
+                                    ou les réduire par des mesures générales de prévention ou des mesures particulières
+                                    à certaines activités, à informer et former les travailleurs, et à assurer le suivi
+                                    individuel de l’état de santé des salariés.</p>
+
+                                <label>Information et formation des salariés</label>
+
+                                <p>Les travailleurs exposés à des agents biologiques doivent être informés et formés sur
+                                    les risques pour la santé et les prescriptions en matière d'hygiène, sur les
+                                    précautions à prendre pour éviter l'exposition, sur le port et l'utilisation des
+                                    équipements et des vêtements de protection individuelle, sur les modalités de tri,
+                                    de collecte, de stockage, de transport et d'élimination des déchets, sur les mesures
+                                    à prendre pour prévenir ou pallier les incidents et sur la procédure à suivre en cas
+                                    d'accident. La formation à la sécurité est dispensée avant que les travailleurs
+                                    exercent une activité impliquant un contact avec les agents biologiques. Elle est
+                                    renouvelée régulièrement et adaptée à l’évolution des risques et aux modifications
+                                    techniques (articles R. 4425-1 à R. 4425-7 du Code du travail).</p>
+
+                                <label>Suivi de l’état de santé des salariés</label>
+
+                                <p>Les modalités du suivi individuel de l’état de santé des salariés, et en particulier
+                                    ce ceux affectés à des postes de travail susceptibles d’exposer à des agents
+                                    biologiques varient en fonction de la catégorie des agents biologiques auxquels les
+                                    salariés sont exposés.</p>
+
+                                <label>Travaux interdits aux femmes enceintes et aux jeunes travailleurs</label>
+
+                                <p>Le Code du travail interdit d’exposer au virus de la rubéole ou au toxoplasme les
+                                    femmes enceintes qui ne sont pas immunisées (article D. 4152-3).
+                                    Seule une étude de poste au cas par cas peut permettre de répondre à la question du
+                                    maintien au poste de travail. Si les risques pour la grossesse ne peuvent être
+                                    contrôlés par une prévention collective renforcée par une prévention individuelle,
+                                    un changement de poste temporaire peut être envisagé (art. L. 1225-7).<br>S’il n’est
+                                    pas possible de proposer aux femmes enceintes un autre emploi, le contrat de travail
+                                    est suspendu jusqu’à la date du début de congé de maternité et une garantie de
+                                    rémunération leur est versée pendant cette période de suspension (art. L. 1225-12,
+                                    L. 1225-14 et R. 1225-4).<br>Voir ’aide-mémoire juridique « Grossesse, maternité et
+                                    travail »</p>
+
+                                <p>Il est par ailleurs interdit d’affecter les jeunes âgés d’au moins 15 ans et de moins
+                                    de 18 ans à des travaux les exposant aux agents biologiques des groupes 3 ou 4 (art.
+                                    D. 4153-19), à l’abattage, l’euthanasie et l’équarrissage d’animaux et à des travaux
+                                    les mettant en contact d’animaux féroces ou venimeux (art. D. 4153-37).<br>Toutefois,
+                                    certains travaux, bien qu’interdits aux jeunes travailleurs, peuvent faire l'objet
+                                    de dérogations, sous réserve d’avoir fait l’objet d’une déclaration auprès de
+                                    l'inspecteur du travail.<br> Il pourra s’agir notamment de dérogations pour les
+                                    jeunes titulaires de certains diplômes ou titres professionnels en lien avec
+                                    l’activité exercée.<br> Voir la chronique droit en pratique, publiée dans travail et
+                                    sécurité « Jeunes dans l’entreprise : travaux interdits et réglementés ».</p>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Mesures de prévention particulières pour certaines activités</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <label>Dispositions relatives aux travaux en contact avec des animaux</label>
+                                <p>Le Code du travail prévoit des mesures de protection qui comprennent notamment une
+                                    information sur les procédés de décontamination et de désinfection et la mise en
+                                    œuvre de procédés pour manipuler et éliminer sans risque les déchets contaminés
+                                    (art. R. 4424-7 et R. 4424-8).
+                                    Un arrêté visant le risque de transmission des zoonoses définit les mesures de
+                                    prévention (conception des installations, choix des matériels, moyens d’hygiène et
+                                    pratiques de travail). Ces mesures s’appliquent aux établissements employant des
+                                    travailleurs susceptibles d’être en contact avec des animaux domestiques ou des
+                                    animaux sauvages (apprivoisés, tenus en captivité ou libres) vivants ou morts, ou
+                                    des déchets contaminés (arrêté du 4 novembre 2002).</p>
+
+                                <label>Dispositions spécifiques aux laboratoires et biotechnologies</label>
+                                <p>Des mesures de confinement appropriées au résultat de l’évaluation des risques
+                                    s’appliquent dans les salles dédiées aux activités techniques des laboratoires et
+                                    autres locaux (art. R. 4424-9 et R. 4424-10).<br>Un arrêté précise les mesures
+                                    techniques de prévention (notamment de confinement) à mettre en œuvre dans les
+                                    laboratoires de recherche, d’enseignement, d’analyses, d’anatomie et cytologie
+                                    pathologiques, les salles d’autopsie et les établissements industriels et agricoles
+                                    où les travailleurs sont susceptibles d’être exposés à des agents biologiques
+                                    pathogènes (arrêté du 16 juillet 2007).</p>
+
+                                <label>Protection des travailleurs en contact avec des objets perforants</label>
+                                <p>En application de l’article R. 4424-11 du Code du travail, un arrêté prévoit des
+                                    mesures de prévention des blessures et des risques de contamination par des agents
+                                    biologiques pathogènes pour les travailleurs susceptibles d’être en contact avec des
+                                    objets perforants dans les établissements de soins.<br>
+                                    Cet arrêté précise les catégories d’établissements et les services concernés, les
+                                    règles applicables en matière d’information et de formation des travailleurs et de
+                                    prise en charge du travailleur blessé. Il définit ce qu’on entend par accident
+                                    exposant au sang (AES) et insiste notamment sur la mise à disposition de dispositifs
+                                    médicaux de sécurité. Son annexe I détaille les précautions standard vis à vis des
+                                    AES et l’annexe II l’organisation de la prise en charge après AESI (arrêté du 10
+                                    juillet 2013).</p>
+
+                                <label>Dispositions relatives aux DASRI</label>
+                                <p>Des dispositions relatives aux déchets d’activités de soins à risques infectieux
+                                    précisent notamment :</p>
+                                <ul>
+                                    <li>les modalités d’entreposage et le contrôle des filières d’élimination de ces
+                                        déchets (deux arrêtés du 7 septembre 1999 modifiés),
+                                    </li>
+                                    <li>les emballages devant être utilisés pour l'évacuation de ces déchets (arrêté du
+                                        24 novembre 2003 modifié).
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="7" style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Réglementation </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>La prévention des cancers professionnels résulte avant tout d’obligations légales et
+                                    réglementaires issues du Code du travail qui prévoit des règles spécifiques pour
+                                    certains facteurs de risque cancérogène. Aux mesures de prévention propres à chacun
+                                    de ces agents s’ajoutent des mesures interdisant certains travaux impliquant des
+                                    agents cancérogènes à certaines catégories de travailleurs.<br>Une surveillance
+                                    médicale renforcée est mise en place pour les travailleurs exposés à certains de ces
+                                    agents cancérogènes. Des fiches d’exposition pour la prévention des risques
+                                    professionnels et des fiches de prévention des expositions dans le cadre de la
+                                    pénibilité doivent être établies pour certains de ces agents.</p>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Dispositions spécifiques aux agents chimiques cancérogènes </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>De nombreux agents chimiques cancérogènes sont utilisés en milieu professionnel.
+                                    Certains d’entre eux font l’objet de restrictions quant à leur fabrication, leur
+                                    mise sur le marché et leur utilisation (règlement européen 1207/2006 du 12 décembre
+                                    2006 modifié, dit règlement REACH). Un seul agent cancérogène est aujourd’hui
+                                    complètement interdit en France : l’amiante. Tous ont une utilisation réglementée
+                                    dans l’entreprise et relèvent des dispositions du Code du travail.<br>Certains
+                                    agents chimiques cancérogènes sont dotés de valeurs limites d’exposition
+                                    professionnelle réglementaires contraignantes : benzène, poussières de bois,
+                                    chlorure de vinyle...</p>
+
+                                <label>Prévention du risque chimique cancérogène</label>
+                                <p>Les règles du Code du travail sont d’autant plus contraignantes que les effets
+                                    cancérogènes des produits chimiques sont importants. Cette distinction repose sur la
+                                    classification règlementaire des produits chimiques établie au niveau européen, le
+                                    règlement européen CLP remplaçant progressivement le système préexistant.</p>
+                                <p>Les cancérogènes classés dans la dernière catégorie relèvent des dispositions
+                                    générales du Code du travail pour la prévention du risque chimique (articles R.
+                                    4412-1 à R. 4412-57). Il s’agit des agents chimiques cancérogènes classés en
+                                    catégorie 3 pour le système préexistant ou en catégorie 2 pour le règlement CLP
+                                    (cancérogènes suspectés), ainsi que des agents chimiques dont les effets
+                                    cancérogènes ont été révélés mais qui ne sont pas encore classés.</p>
+                                <p>Les agents chimiques cancérogènes des 2 premières catégories (dont les effets
+                                    cancérogènes sont les plus importants) sont soumis aux dispositions particulières du
+                                    Code du travail visant les risques cancérogènes, mutagènes et toxiques pour la
+                                    reproduction (CMR). Ces règles s’appliquent :</p>
+                                <ul>
+                                    <li>aux agents chimiques cancérogènes classés dans le système préexistant en
+                                        catégorie 1 (substances que l’on sait être cancérogènes pour l’homme), ou
+                                        catégorie 2 (substances devant être assimilées à des substances cancérogènes
+                                        pour l'homme),
+                                    </li>
+                                    <li>aux agents chimiques classés par le règlement CLP en catégorie 1 A (cancérogènes
+                                        avérés) ou 1 B (cancérogènes présumés),
+                                    </li>
+                                    <li>aux agents chimiques utilisés dans des procédés de travail reconnus cancérogènes
+                                        par l’arrêté du 5 janvier 1993 modifié.
+                                    </li>
+                                </ul>
+
+                                <label>Contrôle des expositions</label>
+                                <p>Outre le mesurage régulier du niveau d’exposition, lorsque les agents chimiques
+                                    cancérogènes auxquels sont exposés les salariés sont dotés de valeurs limites
+                                    réglementaires contraignantes ou indicatives fixées par le Code du travail (articles
+                                    R. 4412-149 et R. 4412-150), l’employeur a l’obligation de faire contrôler le niveau
+                                    d’exposition au moins une fois par an par un organisme accrédité (article
+                                    R.4412-27).</p>
+                                <p>En cas de dépassement de VLEP réglementaires d’agents chimiques cancérogènes classés
+                                    en catégorie 1 ou 2 (système préexistant) ou 1 A ou 1 B (règlement CLP), des mesures
+                                    particulières sont prises. S’il s’agit de VLEP contraignantes, l’employeur doit
+                                    arrêter le travail aux postes de travail concernés jusqu’à la mise en œuvre de
+                                    mesures de prévention adaptées. Le dépassement de VLEP indicatives donne lieu à une
+                                    nouvelle évaluation des risques pour déterminer les mesures à prendre.</p>
+
+                                <label>Travaux interdits à certaines catégories de travailleurs</label>
+                                <p>Certains travaux sont interdits :</p>
+                                <ul>
+                                    <li>aux femmes enceintes ou allaitant : exposition à certains agents chimiques
+                                        dangereux cancérogènes, tels le benzène (articles D. 4152-9 du Code du travail),
+                                    </li>
+                                    <li>aux jeunes travailleurs de moins de 18 ans : exposition aux agents chimiques
+                                        dangereux cancérogènes (articles D. 4153-17 et D. 4153-18),
+                                    </li>
+                                    <li>aux travailleurs temporaires ou titulaires d'un contrat de travail à durée
+                                        déterminée : exposition à certains agents chimiques dangereux cancérogènes, tels
+                                        l’amiante, le cadmium (article D. 4154-1).
+                                    </li>
+                                </ul>
+
+                                <label>Surveillance médicale renforcée</label>
+                                <p>Les examens médicaux par le médecin du travail dans le cadre de la surveillance
+                                    médicale renforcée sont obligatoires au moins une fois tous les 24 mois pour les
+                                    salariés exposés aux agents cancérogènes suivants (articles R. 4624-18 et R. 4624-19
+                                    du Code du travail) :</p>
+                                <ul>
+                                    <li>agents cancérogènes classés en catégorie 1 ou 2 (système préexistant) ou 1 A ou
+                                        1 B (règlement CLP) et agents chimiques utilisés dans les procédés de travail
+                                        reconnus cancérogènes,
+                                    </li>
+                                    <li>activités exposant à l’amiante,</li>
+                                    <li>plomb (lorsque sa concentration dans l’air est supérieure à 0,05 mg/m3 ou la
+                                        plombémie supérieure à 200 microgrammes /litre de sang pour les hommes ou 100
+                                        microgrammes/litre de sang pour les femmes).
+                                    </li>
+                                </ul>
+
+                                <label>Prévention de la pénibilité et traçabilité des expositions</label>
+                                <p>Les agents chimiques dangereux cancérogènes, y compris les poussières et les fumées,
+                                    et l’amiante sont considérés comme des facteurs de risques professionnels liés à la
+                                    pénibilité au travail, car susceptibles de laisser des traces durables,
+                                    identifiables et irréversibles sur la santé (articles L. 4121-3-1 et D. 4121-5 du
+                                    Code du travail).</p>
+                                <p>Dans le cadre de la prévention de la pénibilité, l’employeur doit établir une fiche
+                                    de prévention des expositions contenant des informations sur l’exposition aux agents
+                                    chimiques cancérogènes (article D. 4121-6).</p>
+                                <p>Pour les activités exposant à l’amiante , l’employeur utilise la fiche d’exposition
+                                    amiante établie dans le cadre de la prévention des risques liés à l’amiante (article
+                                    R. 4412-120).</p>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Dispositions spécifiques aux rayonnements ionisants</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Dispositions spécifiques aux champs électromagnétiques<</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Dispositions spécifiques aux agents biologiques</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Dispositions spécifiques aux rayonnements optiques artificiels </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Dispositions spécifiques au travail de nuit </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="8" style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Réglementation</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Le cadre réglementaire de la prévention des risques liés à l’exposition au bruit est
+                                    identique à celui de tout autre risque. La prévention des risques professionnels
+                                    s’appuie sur une démarche dont les principes généraux sont édictés par le Code du
+                                    travail (article L. 4121-2).
+                                </p><br>
+                                <div class="col-xs-12 col-sm-8 col-sm-offset-1"
+                                     style="border: #0c0c0c solid 1px; padding: 0px;">
+                                    <div style="background-color: #3C8DBC; color: white;padding-bottom: 20px;text-align: center">
+                                        <br>Principes généraux d’une démarche de prévention : principales obligations de
+                                        l’employeur
+                                    </div>
+                                    <div><br>
+                                        <ul>
+                                            <li>Éviter les risques</li>
+                                            <li>Évaluer les risques qui ne peuvent être évités</li>
+                                            <li>Combattre les risques à la source</li>
+                                            <li>Agir sur les conditions et l’organisation du travail (choix des
+                                                équipements, des procédés, des substances…)
+                                            </li>
+                                            <li>Former et informer les salariés sur les risques et leur prévention</li>
+                                            <li>Prendre des mesures de protection collective en leur donnant la priorité
+                                                sur les mesures de protection individuelle
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12">
+                                    <p>L’évaluation des risques liés au bruit passe par une évaluation et si nécessaire
+                                        un mesurage des niveaux de bruit auxquels les travailleurs sont exposés. Elle a
+                                        pour objet de déterminer des indicateurs de risques, principalement niveau
+                                        d’exposition sonore quotidienne exprimé en dB(A) et niveau de pression
+                                        acoustique de crête qui correspond à des bruits intenses mais courts et de
+                                        décider des mesures de prévention appropriées</p>
+                                    <p>Les règles de prévention des risques pour la santé et la sécurité des
+                                        travailleurs exposés au bruit sont déterminées d’une part par les articles R.
+                                        4213-5 à R. 4213-6 et d’autre part par les articles R. 4431-1 à R. 4437-4 du
+                                        Code du travail.<br>Le suivi individuel de l'état de santé et l’information des
+                                        travailleurs font l’objet des articles R.4435-2 à R.4436-1.</p>
+                                    <label>Ces règles s’articulent autour des 3 axes suivants :</label>
+                                    <label>Agir sur l'environnement de travail</label>
+                                    <ul>
+
+                                        <li>Réduire le bruit à la source
+                                            <ul>
+                                                <li>Concevoir des machines silencieuses</li>
+                                                <li>Informer sur le niveau sonore des machines</li>
+                                            </ul>
+                                        </li>
+                                        <li>Insonoriser dès leur conception les locaux où seront installés des
+                                            équipements de travail susceptibles d’exposer les travailleurs à un niveau
+                                            sonore quotidien supérieur à 85 dB(a)
+                                            <ul>
+                                                <li>réduire la réverbération</li>
+                                                <li>limiter la propagation du bruit vers les autres locaux</li>
+                                            </ul>
+                                        </li>
+                                        <li>Réduire le bruit dans les locaux
+                                            <ul>
+                                                <li>Mettre en œuvre les principes généraux de prévention</li>
+                                                <li>Diminuer le niveau sonore dans les locaux de travail</li>
+                                                <li>Utiliser les locaux conformément à leur destination.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                    <label>Évaluer les risques</label>
+                                    <ul>
+                                        <li> Évaluer les risques</li>
+                                        <li>Mesurer les risques</li>
+                                    </ul>
+
+                                    <label>Protéger les travailleurs exposés</label>
+                                    <p>Les exigences de la réglementation varient en fonction des niveaux d’exposition :
+                                        le dépassement de certains seuils déclenche une série d’actions à mettre en
+                                        œuvre par le chef d’entreprise.L’exposition est évaluée à partir de deux
+                                        paramètres :</p>
+                                    <ul>
+                                        <li> L’exposition moyenne quotidienne (sur 8 heures : notée LEX,8h)</li>
+                                        <li>L’exposition instantanée aux bruits très courts (niveau crête : noté LpC).
+                                        </li>
+                                    </ul>
+                                    <p>Chacun de ces deux paramètres est comparé à 3 seuils :</p>
+                                    <ul>
+                                        <li>Valeur d’exposition inférieure déclenchant l’action (VAI) : c’est le seuil
+                                            le plus bas ; il déclenche les premières actions de prévention ;
+                                        </li>
+                                        <li>Valeur d’exposition supérieure déclenchant l’action (VAS) : c’est le 2e
+                                            seuil : il déclenche des actions plus sévères. En particulier des actions
+                                            correctives doivent être mises en œuvre.
+                                        </li>
+                                        <li>Valeur limite d’exposition (VLE) : ce troisième seuil ne doit être dépassé
+                                            en aucun cas. A la différence des seuils précédents, il prend en compte
+                                            l’atténuation du bruit apportée par les protecteurs individuels.
+                                        </li>
+                                    </ul>
+                                    <p>Les tableaux ci-après donnent les valeurs de ces seuils pour chacun des deux
+                                        paramètres d’exposition, puis les actions requises lorsqu’ils sont
+                                        dépassés. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="9" style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label>Réglementation</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p>Le terme CMR est issu de la réglementation sur la prévention des risques chimiques. Il est également utilisé pour désigner certains procédés industriels qui ont des effets cancérogènes, mutagènes ou toxiques pour la reproduction (CMR) chez les professionnels qui ont été exposés.
+                                </p><br>
+                                <div class="col-xs-12 col-sm-8 col-sm-offset-1" style="border: #0c0c0c solid 1px; padding: 0px;">
+                                    <div style="background-color: #3C8DBC; color: white;padding-bottom: 20px;text-align: center">
+                                        <br>Définitions à connaître concernant les agents chimiques CMR
+                                    </div>
+                                    <div><br>
+                                        <ul>
+                                            <li><b>Cancérogène  :</b> Agent chimique dangereux à l’état pur (amiante, poussières de bois, benzène…) ou en mélange ou procédé pouvant provoquer l’apparition d’un cancer ou en augmenter la fréquence.</li>
+                                            <li><b>Mutagène</b> ou <b>génotoxique</b>  : produit chimique qui induit des altérations de la structure ou du nombre de chromosomes des cellules. Les chromosomes sont les éléments du noyau de la cellule qui portent l’ADN. L’effet mutagène (ou atteinte génotoxique) est une étape initiale du développement du cancer.</li>
+                                            <li><b>Toxique pour la reproduction</b> ou <b>reprotoxique</b>  : produit chimique (plomb par exemple) pouvant altérer la fertilité de l’homme ou de la femme, ou altérer le développement de l’enfant à naître (avortement spontané, malformation…).</li>
+                                        </ul><br>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-10">
+                                    <p>De nombreux secteurs d’activité sont concernés. En France, près de 10 % de la population active (soit 2,2 millions de salariés) déclare être exposée dans son travail à au moins un agent chimique cancérogène (enquête Sumer 2010). D'après un inventaire réalisé par l’INRS en 2005, ce sont 4,8 millions de tonnes d'agents chimiques cancérogènes, mutagènes ou toxiques pour la reproduction qui ont été utilisées en France, dont les principaux sont des halogénés chlorés (solvants), des composés aromatiques et aliphatiques.</p>
+                                    <p>De nombreux secteurs d’activité sont concernés par les risques liés aux produits CMR. Cependant, certains secteurs peuvent présenter des risques particuliers d’exposition (liste non exhaustive et non hiérarchisée) :</p>
+                                    <ul>
+                                        <li>le secteur du bâtiment et des travaux publics,</li>
+                                        <li>la construction ferroviaire et navale,</li>
+                                        <li>la métallurgie, l’industrie du verre et des métaux,</li>
+                                        <li>l’industrie chimique, pharmaceutique,</li>
+                                        <li>l’industrie du cuir et du caoutchouc,</li>
+                                        <li>l’industrie pétrolière,</li>
+                                        <li>l’industrie du bois,</li>
+                                        <li>l’agriculture,</li>
+                                        <li>les laboratoires de recherche,</li>
+                                        <li>les services (maintenance, nettoyage…).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="10"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="11"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="12"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="13"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="14"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="15"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="16"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="17"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="18"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="19"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="20"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="21"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="22"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="23"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="24"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12" id="25"
+                             style="display:none; background-color: white">
+                            <div class="col-xs-12 col-sm-2">
+                                <label></label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10">
+                                <p></p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}

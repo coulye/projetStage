@@ -1,0 +1,119 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <script>
+        //<![CDATA[
+        $(document).ready(function(){
+            $("[data-mask]").inputmask();
+        });
+    </script>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>My Profile
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/index"><i class="fa fa-home"></i> Home</a></li>
+                <li class="active">My Profile</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-3">
+
+                    <!-- Profile Image -->
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                            <img class="profile-user-img img-responsive img-circle" src="/extratheme/dist/img/boxed-bg.jpg" alt="User profile picture">
+                            <h3 class="profile-username text-center">{{user.prenom}} {{user.nom}}</h3>
+                            <p class="text-muted text-center">{{user.role.libelle}}</p>
+
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item">
+                                    <b>Group(s)</b> <a class="pull-right">{{length user.groupes}}</a>
+                                </li>
+                            </ul>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+
+                    <!-- About Me Box -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">About me...</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <strong><i class="fa fa-unlock-alt margin-r-5"></i> Identifiant de connexion</strong>
+                            <p class="text-muted">{{user.login}}</p>
+                            <hr>
+                            <strong><i class="fa fa-envelope margin-r-5"></i> Email</strong>
+                            <p class="text-muted">{{user.email}}</p>
+                            <hr>
+                            <strong><i class="fa fa-phone margin-r-5"></i> Phone</strong>
+                            <p class="text-muted">{{user.telephone}}</p>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+
+                <div class="col-md-9">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#infos" data-toggle="tab">Infos</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="infos">
+                                <form class="form-horizontal" role="form" method="POST" accept-charset="utf-8" action="/modifierMonProfil">
+                                    <div class="form-group">
+
+                                        {{renderComponent 'comboBox' name="titre" nb-col="2" label=translation.PROFILE_TITLE_NAME_FIRSTNAME idCompare=user.titre values='[{"_id": "Mr", "code": "Mr"}, {"_id": "Mrs", "code": "Mrs"}, {"_id": "Dr", "code": "Dr"}]'}}
+
+                                        {{renderComponent 'inputText' name="nom" placeholder="Name" value=user.nom nb-col="4"}}
+
+                                        {{renderComponent 'inputText' name="prenom" placeholder="Firstname" value=user.prenom nb-col="4"}}
+
+                                    </div>
+
+                                    {{renderComponent 'inputPasswd' name="password" formgroup="true" label=translation.PASSWORD_LABEL placeholder="New Password" confirmPwd="true" nb-col="5"}}
+
+                                    {{renderComponent 'comboBoxDB' formgroup="true" label=translation.ROLE name='role' idCompare=result.one.role values=result.Role nb-col="5" }}
+
+                                    {{renderComponent 'inputText' name="adresse1" label=translation.ADDRESS_1 placeholder="Primary adress" value=user.adresse1 nb-col="10" formgroup="true"}}
+
+                                    {{renderComponent 'inputText' name="adresse2" label=translation.ADDRESS_2 placeholder="Additionnal adress" value=user.adresse2 nb-col="10" formgroup="true"}}
+
+                                    <div class="form-group">
+                                        {{renderComponent 'inputText' name="code_postal" label=translation.ZIP_CODE placeholder="Zip Code" value=user.code_postal nb-col="2"}}
+
+                                        {{renderComponent 'inputText' name="ville" label=translation.CITY placeholder="City" value=user.ville nb-col="6"}}
+                                    </div>
+
+                                    {{renderComponent 'inputPhone' name="telephone" label=translation.PHONE inputmask="99-99-99-99-99" formgroup="true" value=user.telephone}}
+
+                                    {{renderComponent 'inputEmail' name="email" formgroup="true" label=translation.EMAIL placeholder="Email" confirmEmail="true" value=user.email nb-col="5" }}
+
+                                    {{renderComponent 'inputHidden' name="id_extrauser" value=user._id}}
+
+                                    {{renderComponent 'inputHidden' name="login" value=user.login}}
+
+                                    {{renderComponent 'comboBoxEditable' formgroup="true" label=translation.ROLE name='role2' idCompare=result.one.role values=result.Role nb-col="3" }}
+
+                                    {{renderComponent 'buttonSubmit' name="button" nb-col="10" nb-col-offset="2" btn-class="btn-primary" value="Enregistrer" formgroup="true"}}
+                                </form>
+                            </div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div><!-- /.nav-tabs-custom -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}

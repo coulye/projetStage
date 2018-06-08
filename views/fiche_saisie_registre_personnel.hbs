@@ -1,0 +1,164 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <script>
+        //<![CDATA[
+        $(document).ready(function(){
+            $.fn.datepicker.defaults.format = "dd/mm/yyyy";
+            $('.datepicker').datepicker({
+                language: 'fr'
+            });
+
+        });
+    </script>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Registre Unique du Personnel et Stagiaires
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/index"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#">Personnel ou stagiaire</a></li>
+                <li class="active">{{#if result.nom}}Modification{{else}}Création{{/if}}</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- About Me Box -->
+                    <div class="box box-primary">
+                        <form class="form-horizontal" role="form" method="POST" accept-charset="utf-8" action="{{#if result.nom}}/updatepersonnelstagiaire{{else}}/addpersonnelstagiaire{{/if}}">
+                            <div class="col-xs-12 col-sm-12">
+                                <h3>{{#if result.one}} {{else}}{{#if result.nom}}Modification{{else}}Création{{/if}} personnel ou stagiaire{{/if}}</h3>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Nom / Prénom / Adresse : </label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" placeholder="Name" type="text" name="nom" title="Ce champs est requis" value="{{#if result}}{{result.nom}}{{/if}}" required="required" autofocus/>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input class="form-control" placeholder="Firstname" type="text" name="prenom" title="Ce champs est requis" value="{{#if result}}{{result.prenom}}{{/if}}" required="required"/>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input id="adresse" class="form-control" placeholder="Adress" type="text" name="adresse" title="This field is required" value="{{#if result}}{{result.adresse}}{{/if}}" required="required"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Num. Sécu. Soc. / Nationalité / Sexe: </label>
+                                <div class="col-sm-2">
+                                    <input class="form-control" placeholder="Numéro Sécu." type="text" name="num_SS" title="This field is required" value="{{#if result}}{{result.num_SS}}{{/if}}" required="required"/>
+                                </div>
+                                </label>
+                                <div class="col-sm-1">
+                                    <input class="form-control" placeholder="Nationalité" type="text" name="nationalite" title="This field is required" value="{{#if result}}{{result.nationalite}}{{/if}}" required="required"/>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <select class="form-control" id="sexe" name="sexe" required="required">
+                                            <option value="H" {{#if result}}{{#compare result.sexe 'H' operator='=='}}selected{{/compare}}{{/if}}>Homme</option>
+                                            <option value="F" {{#if result}}{{#compare result.sexe 'F' operator='=='}}selected{{/compare}}{{/if}}>Femme</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <label for="date_naissance" class="col-sm-1 control-label">Date Naissance </label>
+                                <div class="col-sm-2">
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input id="date_naissance" type="text" class="form-control datepicker" placeholder="Date naissance" name="date_naissance"  value="{{#if result}}{{result.date_naissance}}{{/if}}" title="Ce champs est requis" required="required">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Emploi qualif. / Date entrée / Date sortie</label>
+                                <div class="col-sm-2">
+                                    <input class="form-control" placeholder="Emploi qualification" type="text" name="emploi_qualification" title="Emploi qualification" value="{{#if result}}{{result.emploi_qualification}}{{/if}}" required="required" autofocus/>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input id="date_entree" type="text" class="datepicker form-control" placeholder="Date entrée" name="date_entree"  value="{{#if result}}{{result.date_entree}}{{/if}}" title="Ce champs est requis" required="required">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input id="date_sortie" type="text" class="datepicker form-control" placeholder="Date sortie" name="date_sortie"  value="{{#if result}}{{result.date_sortie}}{{/if}}" title="Date de sortie de l'entreprise">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Trav. étranger Titre / Numéro d'ordre</label>
+                                <div class="col-sm-3">
+                                    <input id="trav_etranger_titre" class="form-control" placeholder="Titre Trav. Etranger" type="text" name="trav_etranger_titre" title="Titre Trav. Etranger" value="{{#if result}}{{result.trav_etranger_titre}}{{/if}}" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <input id="trav_etranger_num_ordre" class="form-control" type="text" placeholder="Numéro d'ordre trav. etranger" name="trav_etranger_num_ordre" value="{{#if result}}{{result.trav_etranger_num_ordre}}{{/if}}" title="Numéro d'ordre Trav. Etranger" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Jeune Trav. apprenti / Jeune Trav. prof.</label>
+                                <div class="col-sm-3">
+                                    <input id="jeune_trav_apprentissage" class="form-control" placeholder="Jeune Trav. Apprentissage" type="text" name="jeune_trav_apprentissage" title="Jeune Travailleur Apprentissage" value="{{#if result}}{{result.jeune_trav_apprentissage}}{{/if}}" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <input id="jeune_trav_profess" class="form-control" type="text" placeholder="Jeune Trav. profession" name="jeune_trav_profess" value="{{#if result}}{{result.jeune_trav_profess}}{{/if}}" title="Jeune Travailleur profession" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Trav. contrat CDD / temps partiel / Autre.</label>
+                                <div class="col-sm-3">
+                                    <input id="trav_contrat_specif_CDD" class="form-control" placeholder="Trav. contrat spécif.CDD" type="text" name="trav_contrat_specif_CDD" title="Trav. contrat spécif.CDD" value="{{#if result}}{{result.trav_contrat_specif_CDD}}{{/if}}" required="required"/>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input id="trav_contrat_specif_tps_partiel" class="form-control" type="text" placeholder="Trav. contrat spécif. temps partiel" name="trav_contrat_specif_tps_partiel" value="{{#if result}}{{result.trav_contrat_specif_tps_partiel}}{{/if}}" title="Trav. contrat spécif. temps partiel" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <input id="jeune_trav_profess" class="form-control" type="text" placeholder="Trav. Contrat Specif Autre" name="trav_contrat_specif_autre" value="{{#if result}}{{result.trav_contrat_specif_autre}}{{/if}}" title="Trav. contrat spécif. autre" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Générer fiche formation / habilitation / autorisation</label>
+                                <div class="col-sm-3">
+                                    <input id="trav_contrat_specif_CDD" class="checkbox" placeholder="Trav. contrat spécif.CDD" type="checkbox" name="generer_fiche_form_habil_autor" title="Trav. contrat spécif.CDD" {{#if result.trav_contrat_specif_CDD}}checked{{/if}} required="required"/>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-9 col-sm-10">
+                                    {{#if result}}
+                                        <input type="hidden" name="_id" value="{{result._id}}"/>
+                                    {{/if}}
+                                    <button type="submit" name="button" id="button" class="btn btn-primary">{{#if result}}Mettre à jour{{else}}Enregistrer{{/if}} les données</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                            </div>
+                        </form>
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+
+            </div><!-- /.row -->
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}

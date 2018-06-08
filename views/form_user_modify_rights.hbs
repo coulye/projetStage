@@ -1,0 +1,215 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <script>
+        //<![CDATA[
+        $(document).ready(function(){
+            $("[data-mask]").inputmask();
+        });
+    </script>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Modify User's Rights data
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/index"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#">Update user rights</a></li>
+                <li class="active">Create</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- About Me Box -->
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <form class="form-horizontal" role="form" method="POST" accept-charset="utf-8" action="/updateuserrights">
+                                <div class="col-xs-12 col-sm-12">
+                                    <h3>Add or remove rights to this user</h3>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name/Firstname</label>
+                                    <div class="col-sm-1">
+                                        <select class="form-control" disabled id="titre" name="titre" required="required">
+                                            {{#if result}}{{else}}
+                                                <option value="" disabled selected></option>
+                                            {{/if}}
+                                            <option value="Mr" {{#if result}}{{#compare result.titre 'Mr' operator='=='}}selected{{/compare}}{{/if}}>Mr</option>
+                                            <option value="Mme" {{#if result}}{{#compare result.titre 'Mme' operator='=='}}selected{{/compare}}{{/if}}>Mme</option>
+                                            <option value="Dr" {{#if result}}{{#compare result.titre 'Dr' operator='=='}}selected{{/compare}}{{/if}}>Dr</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input class="form-control" disabled placeholder="Name" type="text" name="nom" title="Ce champs est requis" value="{{#if result}}{{result.Accounts.nom}}{{/if}}" required="required" autofocus/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input class="form-control" disabled placeholder="Firstname" type="text" name="prenom" title="Ce champs est requis" value="{{#if result}}{{result.Accounts.prenom}}{{/if}}" required="required"/>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="submit" name="button" id="button" class="btn btn-primary">Enregistrer</button>
+                                    </div>
+                                </div>
+                                <div class="form-group checkbox">
+                                    <label for="{{this.color}}" class="col-sm-2 control-label">Fonctionalités :</label>
+                                    <div class="row">
+                                        {{#each result.Functionalities}}
+                                            {{#compare @index '3' operator='<'}}
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    <label class="checkbox-group">
+                                                        <input class="checkbox-group__checkbox" id="{{this._id}}" type="checkbox" name="functionalities" {{#compare this._id ../this._id operator="=="}}checked{{/compare}} value="{{this._id}}">
+                                                        <span class="checkbox-group__span"></span>
+                                                        <!--a href="#"-->
+                                                        <div class="info-box bg-{{this.color}}"
+                                                             onmouseover="activateBoxOver(this, '{{this.color}}');"
+                                                             onmouseout="deactivateBoxOver(this, '{{this.color}}');" title="{{#replace this.title '<br/>' ' '}}{{/replace}}">
+                                                            <span class="info-box-icon"><i class="fa {{this.iconfs}} fa-1x"
+                                                                   aria-hidden="true"></i></span>
+                                                            <div class="info-box-content">
+                                                                <span class="info-box-text">{{{this.title}}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                    <!--/a-->
+                                                </div>
+                                            {{/compare}}
+                                        {{/each}}
+                                    </div>
+                                    <label for="{{this.color}}" class="col-sm-2 control-label"></label>
+                                    <div class="row">
+                                        {{#each result.Functionalities}}
+                                            {{#compare @index '2' operator='>'}}
+                                                {{#compare @index '6' operator='<'}}
+                                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                                        <label class="checkbox-group">
+                                                            <input class="checkbox-group__checkbox" id="{{this._id}}" type="checkbox" name="functionalities" {{#compare this._id ../this._id operator="=="}}checked{{/compare}} value="{{this._id}}">
+                                                            <span class="checkbox-group__span"></span>
+                                                            <!--a href="#"-->
+                                                                <div class="info-box bg-{{this.color}}"
+                                                                     onmouseover="activateBoxOver(this, '{{this.color}}');"
+                                                                     onmouseout="deactivateBoxOver(this, '{{this.color}}');" title="{{#replace this.title '<br/>' ' '}}{{/replace}}">
+                                            <span class="info-box-icon"><i class="fa {{this.iconfs}} fa-1x"
+                                                                           aria-hidden="true"></i></span>
+                                                                    <div class="info-box-content">
+                                                                        <span class="info-box-text">{{{this.title}}}</span>
+                                                                    </div>
+                                                                </div>
+                                                        </label>
+                                                        <!--/a-->
+                                                    </div>
+                                                {{/compare}}
+                                            {{/compare}}
+                                        {{/each}}
+                                    </div>
+                                    <label for="{{this.color}}" class="col-sm-2 control-label"></label>
+                                    <div class="row">
+                                        {{#each result.Functionalities}}
+                                            {{#compare @index '5' operator='>'}}
+                                                {{#compare @index '9' operator='<'}}
+                                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                                        <label class="checkbox-group">
+                                                            <input class="checkbox-group__checkbox" id="{{this._id}}" type="checkbox" name="functionalities" {{#compare this._id ../this._id operator="=="}}checked{{/compare}} value="{{this._id}}">
+                                                            <span class="checkbox-group__span"></span>
+                                                        <!--a href="#"-->
+                                                            <div class="info-box bg-{{this.color}}"
+                                                                 onmouseover="activateBoxOver(this, '{{this.color}}');"
+                                                                 onmouseout="deactivateBoxOver(this, '{{this.color}}');" title="{{#replace this.title '<br/>' ' '}}{{/replace}}">
+                                                                <span class="info-box-icon"><i class="fa {{this.iconfs}} fa-1x"
+                                                                   aria-hidden="true"></i></span>
+                                                                <div class="info-box-content">
+                                                                    <span class="info-box-text">{{{this.title}}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                {{/compare}}
+                                            {{/compare}}
+                                        {{/each}}
+                                    </div>
+                                    <label for="{{this.color}}" class="col-sm-2 control-label"></label>
+                                    <div class="row">
+                                        {{#each result.Functionalities}}
+                                            {{#compare @index '8' operator='>'}}
+                                                {{#compare @index '12' operator='<'}}
+                                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                                        <label class="checkbox-group">
+                                                            <input class="checkbox-group__checkbox" id="{{this._id}}" type="checkbox" name="functionalities" {{#compare this._id ../this._id operator="=="}}checked{{/compare}} value="{{this._id}}">
+                                                            <span class="checkbox-group__span"></span>
+                                                        <!--a href="#"-->
+                                                            <div class="info-box bg-{{this.color}}"
+                                                                 onmouseover="activateBoxOver(this, '{{this.color}}');"
+                                                                 onmouseout="deactivateBoxOver(this, '{{this.color}}');" title="{{#replace this.title '<br/>' ' '}}{{/replace}}">
+                                                                <span class="info-box-icon"><i class="fa {{this.iconfs}} fa-1x"
+                                                                       aria-hidden="true"></i></span>
+                                                                <div class="info-box-content">
+                                                                    <span class="info-box-text">{{{this.title}}}</span>
+                                                                </div>
+                                                            </div>
+                                                        <!--/a-->
+                                                        </label>
+                                                    </div>
+                                                {{/compare}}
+                                            {{/compare}}
+                                        {{/each}}
+                                    </div>
+                                    <label for="{{this.color}}" class="col-sm-2 control-label"></label>
+                                    <div class="row">
+                                        {{#each result.Functionalities}}
+                                            {{#compare @index '11' operator='>'}}
+                                                {{#compare @index '15' operator='<'}}
+                                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                                        <label class="checkbox-group">
+                                                            <input class="checkbox-group__checkbox" id="{{this._id}}" type="checkbox" name="functionalities" {{#compare this._id ../this._id operator="=="}}checked{{/compare}} value="{{this._id}}">
+                                                            <span class="checkbox-group__span"></span>
+                                                            <!--a href="#"-->
+                                                            <div class="info-box bg-{{this.color}}"
+                                                                 onmouseover="activateBoxOver(this, '{{this.color}}');"
+                                                                 onmouseout="deactivateBoxOver(this, '{{this.color}}');" title="{{#replace this.title '<br/>' ' '}}{{/replace}}">
+                                                            <span class="info-box-icon"><i class="fa {{this.iconfs}} fa-1x"
+                                                                                           aria-hidden="true"></i></span>
+                                                                <div class="info-box-content">
+                                                                    <span class="info-box-text">{{{this.title}}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </label>
+                                                        <!--/a-->
+                                                    </div>
+                                                {{/compare}}
+                                            {{/compare}}
+                                        {{/each}}
+                                    </div>
+
+                                </div>
+
+                                <hr>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        {{#if result}}
+                                            <input type="hidden" name="_id" value="{{result.Accounts._id}}"/>
+                                        {{/if}}
+                                        <button type="submit" name="button" id="button" class="btn btn-primary">Enregistrer</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+
+            </div><!-- /.row -->
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}

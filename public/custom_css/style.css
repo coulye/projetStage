@@ -1,0 +1,101 @@
+/*
+A custom Bootstrap 3.2 'HdC' style theme for OTF Framework
+from http://huiledecode.org
+This CSS code should follow the 'bootstrap.css'
+in your HTML file.
+license: GPL v3
+author: Huile de Code @2014-2015
+*/
+
+.content-header > h1 {
+    font-size: 40px;
+}
+
+.info-box-text {
+        font-size: 14px;
+        word-wrap: break-word;
+}
+
+.bg-red-active {
+    border-style: none solid none none;
+    border-width: 4px;
+    border-color: navy;
+}
+
+.bg-olive-active {
+    border-style:  none solid none none;
+    border-width: 4px;
+    border-color: red;
+}
+
+.bg-green-active {
+    border-style:  none solid none none;
+    border-width: 4px;
+    border-color: red;
+}
+
+.bg-navy-active {
+    border-style:  none solid none none;
+    border-width: 4px;
+    border-color: red;
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+.checkbox-group {
+    margin-bottom: 0;
+    padding-top: 0;
+}
+
+.checkbox label {
+    padding-left: 0px;
+}
+
+.checkbox-group__span {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 2px;
+    cursor: pointer;
+    display: block;
+    height: 16px;
+    position: relative;
+    width: 16px;
+}
+
+.checkbox-group__checkbox {
+    display: none;
+}
+
+.checkbox-group__checkbox:checked +span::after {
+    color: white;
+    content: "\e013";
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-size: 27px;
+    font-weight: 400;
+    left: 5px;
+    line-height: 15px;
+    position: absolute;
+    text-align: center;
+    top: 25px;
+    width: 16px;
+}
+.main-sidebar, .left-side {
+    width: 240px;
+}
+.content-wrapper, .right-side, .main-footer {
+    margin-left: 242px;
+}
+
+@media (max-width: 1280px) {
+    .info-box-text {
+        font-size: 10px;
+        word-wrap: break-word;
+    }
+}

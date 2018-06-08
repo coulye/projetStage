@@ -1,0 +1,138 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <script>
+        //<![CDATA[
+        $(document).ready(function(){
+            $("[data-mask]").inputmask();
+        });
+
+        //fonction ajout de champs
+        $(document).ready(function() {
+            var maxField = 20; //limitation des elements
+            var x = 1; //Initial field counter is 1
+
+            //ajout d instruction
+            var addButtontrav = $('.add_buttontrav'); //bouton ajouter
+            var wrappertrav = $('.field_wrappertrav'); //Input field wrapper
+            var fieldHTMLtrav = '<div class="col-xs-12 col-sm-12"><hr class="my-4"><div class="col-sm-2" style="text-align: right"><label for="inputName">Nature des tavaux</label></div><div class="col-sm-10"><input class="form-control" placeholder="nature des travaux" type="text" name="travbat[]" value="" required="required" autofocus/></div></div><div class="col-xs-12 col-sm-12"><div class="col-sm-2" style="text-align: right"><label for="inputName">Observation</label></div><div class="col-sm-10"><input class="form-control" placeholder="Observation" type="text" name="travobs[]" value="" required="required" autofocus/></div></div><div class="col-xs-12 col-sm-12"><div class="col-sm-2" style="text-align: right"><label for="inputName">Nom des personnes ou sociétés chargées des travaux</label></div><div class="col-sm-10"><input class="form-control" placeholder="personne en charge des travaux" type="text" name="travorg[]" value="" required="required" autofocus/></div></div><div class="col-xs-12 col-sm-12"><div class="col-sm-2" style="text-align: right"><label for="inputName">Date</label></div><div class="col-sm-2"><input class="form-control" type="date" name="travdate[]" value="" required="required" autofocus/></div><div class="col-sm-2" style="text-align: right"><label for="inputName">Visa</label></div><div class="col-sm-2"><input class="form-control" placeholder="visa" type="text" name="travvisa[]" value="" required="required" autofocus/></div></div>'; //New input field html
+            $(addButtontrav).click(function () { //Once add button is clicked
+                if (x < maxField) { //Check maximum number of input fields
+                    x++; //Increment field counter
+                    $(wrappertrav).append(fieldHTMLtrav); // Add field html
+                }
+            });
+        });
+    </script>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Création du registre incendie
+            </h1>
+            <h2>
+                Etape 10 :
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                    </div>
+                </div>
+            </h2>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- About Me Box -->
+                    <div class="box box-primary">
+                        <div class="box-body">
+
+                            <form class="form-horizontal" role="form" method="POST" accept-charset="utf-8" action="{{#if result.one}}/add_registresecuincendieetape2{{/if}}">
+                                <div class="col-xs-12 col-sm-12">
+                                    <h3>Etape - Tavaux d'amenagement et transformation </h3>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="field_wrappertrav">
+                                        <div class="col-xs-12 col-sm-12">
+                                            <div class="col-sm-2" style="text-align: right">
+                                                <label for="inputName">Nature des tavaux</label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" placeholder="nature des travaux" type="text" name="travbat[]" value="{{#if result}}{{result.TravauxAmenagementTransformation.nature_travaux}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12">
+                                            <div class="col-sm-2" style="text-align: right">
+                                                <label for="inputName">Observation</label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" placeholder="Observation" type="text" name="travobs[]" value="{{#if result}}{{result.TravauxAmenagementTransformation.observation}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12">
+                                            <div class="col-sm-2" style="text-align: right">
+                                                <label for="inputName">Nom des personnes ou sociétés chargées des travaux</label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" placeholder="personne en charge des travaux" type="text" name="travorg[]" value="{{#if result}}{{result.TravauxAmenagementTransformation.Entreprises_extId}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12">
+                                            <div class="col-sm-2" style="text-align: right">
+                                                <label for="inputName">Date</label>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input class="form-control" type="date" name="travdate[]" value="{{#if result}}{{result.TravauxAmenagementTransformation.date}}{{/if}}" required="required" autofocus/>
+                                            </div>
+                                            <div class="col-sm-2" style="text-align: right">
+                                                <label for="inputName">Visa</label>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input class="form-control" placeholder="visa" type="text" name="travvisa[]" value="" required="required" autofocus/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                        <div class="col-sm-2" style="text-align: right">
+                                            <label for="inputName">Ajouter un amenagement </label>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a href="javascript:void(0);" class="add_buttontrav" title="Ajouter une instruction"><button type="button" class="btn btn-primary">Ajouter</button></a>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-11 col-sm-12">
+                                                {{#if result.one}}
+                                                    <input type="hidden" name="_id" value="{{result.one._id}}"/>
+                                                {{/if}}
+                                                <button type="submit" name="buttonetape2" id="button2" class="btn btn-primary">Suivant</button>
+                                            </div>
+                                        </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </section>
+    </div><!-- /.col -->
+
+    </div><!-- /.row -->
+    </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}
+
