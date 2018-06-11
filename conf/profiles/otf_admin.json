@@ -574,19 +574,19 @@
         "data_model": "RegistreSecuriteIncendie"
     },
     "POST/formaddregistreetape1": {
-      "module": "inserter",
-      "methode": "registreEtape",
-      "screen": "formaddregistreetape1",
-      "auth": true,
-      "params_names": [
-        ["data_creation", "nom", "prenom"],
-        ["libelle", "tel", "adresse1", "adresse2", "code_postal", "ville"],
-        ["libelle", "tel", "adresse1", "adresse2", "code_postal", "ville"],
-        ["libelle", "tel", "adresse1", "adresse2", "code_postal", "ville"]
-      ],
-      "data_model": ["MiseAJour", "NumeroUtiles", "NumerosUrgence", "Installateurs", "VerificateursAgrees"],
-      "redirect": true,
-      "redirect_action": "formaddregistreetape2"
+        "module": "inserter",
+        "methode": "registreEtape",
+        "screen": "formaddregistreetape1",
+        "auth": true,
+        "params_names": [
+            ["data_creation", "nom", "prenom"],
+            ["libelle", "tel", "adresse1", "adresse2", "code_postal", "ville"],
+            ["libelle", "tel", "adresse1", "adresse2", "code_postal", "ville"],
+            ["libelle", "tel", "adresse1", "adresse2", "code_postal", "ville"]
+        ],
+        "data_model": ["MiseAJour", "NumeroUtiles", "NumerosUrgence", "Installateurs", "VerificateursAgrees"],
+        "redirect": true,
+        "redirect_action": "formaddregistreetape2"
     },
     "GET/formaddregistreetape2": {
         "module": "finder",

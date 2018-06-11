@@ -325,18 +325,18 @@
         "collection":"numeroutiles",
         "schema":{
             "_id":"ObjectId",
-            "installateurs_extId":{
+            "installateurs_extId":[{
                 "type":"ObjectId",
                 "ref":"Installateurs"
-            },
-            "verificateursAgrees_extId":{
+            }],
+            "verificateursAgrees_extId":[{
                 "type":"ObjectId",
                 "ref":"VerificateursAgrees"
-            },
-            "numerosUrgence_extId":{
+            }],
+            "numerosUrgence_extId":[{
                 "type":"ObjectId",
                 "ref":"NumerosUrgence"
-            }
+            }]
         }
     },
     "Installateurs":{
