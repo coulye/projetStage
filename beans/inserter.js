@@ -149,6 +149,7 @@ exports.inserter = {
                     return cb(err);
                 }
             }
+
             /** todo : il faut plusieurs appel recursif pour traiter l'ensemble des champs de chaque catégorie */
             insertArray(0, function () {
                 logger.debug('documents insérés');
@@ -159,7 +160,7 @@ exports.inserter = {
                 /** todo : ici on doit découper le tableau des ids précédemment insérés pour les ajouter à la collection NumeroUtiles */
                     //préparation des données sous la forme de 3 tableaux d'_ids
                 var dataToInsert = {
-                        installateurs_extId : tabIds.slice(14, 20),
+                        installateurs_extId: tabIds.slice(14, 20),
                         verificateursAgrees_extId: tabIds.slice(20),
                         numerosUrgence_extId: tabIds.slice(0, 14)
                     }
@@ -201,7 +202,7 @@ exports.inserter = {
                 "date_construction": dataArray["date_construction"][k],
                 "nbre_niveaux": dataArray["nbre_niveaux"][k]
             });
-            logger.debug('documents nbFieldsToinsertBat compter : '+nbFieldsToinsertBat);
+            logger.debug('documents nbFieldsToinsertBat compter : ' + nbFieldsToinsertBat);
         }
 
         var nbFieldsToinsertPlan = dataArray["emplacement"].length;
@@ -212,7 +213,7 @@ exports.inserter = {
                 "date_maj": dataArray["date_maj"][k],
                 "visa": dataArray["visa"][k]
             });
-            logger.debug('documents nbFieldsToinsertPlan compter : '+nbFieldsToinsertPlan);
+            logger.debug('documents nbFieldsToinsertPlan compter : ' + nbFieldsToinsertPlan);
         }
 // insertion des données de la collection MiseAJour, entête du formulaire
         GLOBAL.schemas[model[0]].createDocument(dataTableau, function (err, data_inserted1) {
@@ -247,15 +248,16 @@ exports.inserter = {
                     return cb(err);
                 }
             }
+
             insertArray(0, function () {
                 logger.debug('documents insérés');
                 console.log('dataIntoArray : ', dataIntoArray);
                 console.log('tabIds : ', tabIds);
                 var dataToInsert = {
-                        BatimentsEntreprise_extId : tabIds.slice(10, 12),
-                        PlanEtablissement: tabIds.slice(13,15),
-                        Entreprises_extId: tabIds.slice(0, 9)
-                    }
+                    BatimentsEntreprise_extId: tabIds.slice(10, 12),
+                    PlanEtablissement: tabIds.slice(13, 15),
+                    Entreprises_extId: tabIds.slice(0, 9)
+                }
                 GLOBAL.schemas[model[1]].createDocument(dataToInsert, function (err, data_inserted2) {
                     logger.debug("data insérées : ", data_inserted2);
                     return cb(null, {data: data_inserted2, room: _controler.room});

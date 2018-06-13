@@ -619,12 +619,10 @@
     },
     "POST/formaddregistreetape3": {
         "module": "inserter",
-        "methode": "listq",
+        "methode": "one",
         "screen": "formaddregistreetape3",
         "auth": true,
-        "params_names": [
-            "annee", "categorie_salarie", "nbre", "date_periode"
-        ],
+        "params_names": ["annee", "categorie_salarie", "nbre", "date_periode"],
         "data_model": ["Effectif"],
         "redirect": true,
         "redirect_action": "formaddregistreetape4"

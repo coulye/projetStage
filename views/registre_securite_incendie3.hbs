@@ -1,0 +1,84 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Registre de sécutité incendie
+            </h1>
+            <br>
+            <h2 class="center-block">
+                Effectuer vos actions
+            </h2>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-home"></i> Accueil</a></li>
+            </ol>
+        </section>
+
+        <!--section>
+          <img src="img/logo-otf-6-1_280px.png" class="img-responsive" alt="logo OTF²">
+        </section-->
+        <!-- Main content -->
+        <section class="content">
+            <!-- ================= widgets accueil ======================= -->
+            <!-- First row of dashboard -->
+
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <a href="/formaddregistreetape1">
+                        <div class="info-box bg-red"
+                             onmouseover="activateBoxOver(this, 'red');"
+                             onmouseout="deactivateBoxOver(this, 'red');">
+                                    <span class="info-box-icon"><i class="fa fa-plus"
+                                                                   aria-hidden="true"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Saisir le registre</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <a href="{{this.action_name}}">
+                        <div class="info-box bg-red"
+                             onmouseover="activateBoxOver(this, 'red');"
+                             onmouseout="deactivateBoxOver(this, 'red');">
+                                    <span class="info-box-icon"><i class="fa fa-edit"
+                                                                   aria-hidden="true"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Completer le regsitre</span><br/>
+                                <p>Suivi des incidents / Visite de controle</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <a href="{{this.action_name}}">
+                        <div class="info-box bg-red"
+                             onmouseover="activateBoxOver(this, 'red');"
+                             onmouseout="deactivateBoxOver(this, 'red');">
+                                    <span class="info-box-icon"><i class="fa fa-download"
+                                                                   aria-hidden="true"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Télécharger le registre</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}
