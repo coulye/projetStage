@@ -496,6 +496,21 @@
             "visa":"String"
         }
     },
+    "VerificationInstallationSecurite":{
+        "collection":"verificationInstallationSecurite",
+        "schema":{
+            "_id":"ObjectId",
+            "date":"String",
+            "numero":"String",
+            "observation":"String",
+            "Entreprises_extId":{
+                "type":"ObjectId",
+                "ref":"Entreprises"
+            },
+            "visa":"String",
+            "type":"String"
+        }
+    },
     "RecensementRobinetIncendie":{
         "collection":"recensementrobinetincendie",
         "schema":{
@@ -590,7 +605,12 @@
             "_id":"ObjectId",
             "date":"String",
             "date_autorisation_ouverture":"String",
-            "delivree_par":"String"
+            "delivree_par":"String",
+            "Entreprises_extId":{
+                "type":"ObjectId",
+                "ref":"Entreprises"
+            },
+            "visa":"String"
         }
     },
     "VisitePeriodiqueCommission":{
@@ -599,6 +619,10 @@
             "_id":"ObjectId",
             "date":"String",
             "observations":"String",
+            "Entreprises_extId":{
+                "type":"ObjectId",
+                "ref":"Entreprises"
+            },
             "visa":"String"
         }
     },

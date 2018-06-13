@@ -10,17 +10,18 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Registre de sécurité incendie
+                Registre de sécutité incendie
             </h1>
             <br>
             <h2 class="center-block">
-                Menu principal RSI
+                Menu vérification et suivi RSI
             </h2>
             <h3>
                 Effectuer vos actions
             </h3>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-home"></i> Accueil</a></li>
+                <li><a href="/index"><i class="fa fa-home"></i> Accueil</a></li>
+                <li><a href="/hscti_registresecuincendie"><i class="fa fa-angle-left"></i> Menu Principal RSI</a></li>
             </ol>
         </section>
 
@@ -34,53 +35,43 @@
 
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <a href="/formaddregistreetape1">
+                    <a href="/formaddverificationinstallations">
                         <div class="info-box bg-red"
                              onmouseover="activateBoxOver(this, 'red');"
                              onmouseout="deactivateBoxOver(this, 'red');">
-                            <span class="info-box-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                    <span class="info-box-icon"><i class="fa fa-plus"
+                                                                   aria-hidden="true"></i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text">Saisir le registre</span>
+                                <span class="info-box-text">Ajout de vérification, d'entretien et d'essai des installations </span>
                             </div>
                         </div>
                     </a>
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <a href="/btnaddverificationsuivi">
+                    <a href="/formaddsuiviincident">
                         <div class="info-box bg-red"
                              onmouseover="activateBoxOver(this, 'red');"
                              onmouseout="deactivateBoxOver(this, 'red');">
-                            <span class="info-box-icon"><i class="fa fa-edit" aria-hidden="true"></i></span>
+                                    <span class="info-box-icon"><i class="fa fa-plus"
+                                                                   aria-hidden="true"></i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text">Completer le registre</span><br/>
-                                <p>Vérifications / Suivis / Visites</p>
+                                <span class="info-box-text">Ajout des suivis d'incidents</span>
                             </div>
                         </div>
                     </a>
                 </div>
-            </div>
-            <div class="row">
+
                 <div class="col-md-4 col-sm-6 col-xs-12">
-                    <a href="/formaddregistreetape1">
+                    <a href="/formaddvisite">
                         <div class="info-box bg-red"
                              onmouseover="activateBoxOver(this, 'red');"
                              onmouseout="deactivateBoxOver(this, 'red');">
-                            <span class="info-box-icon"><i class="fa fa-book" aria-hidden="true"></i></span>
+                                    <span class="info-box-icon"><i class="fa fa-plus"
+                                                                   aria-hidden="true"></i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text">Consulter / Modifier le registre</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <a href="{{this.action_name}}">
-                        <div class="info-box bg-red"
-                             onmouseover="activateBoxOver(this, 'red');"
-                             onmouseout="deactivateBoxOver(this, 'red');">
-                            <span class="info-box-icon"><i class="fa fa-download" aria-hidden="true"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Télécharger le registre</span>
+                                <span class="info-box-text">Ajout de visite de commission</span><br/>
+                                <p>Commision, inspection, ...</p>
                             </div>
                         </div>
                     </a>
