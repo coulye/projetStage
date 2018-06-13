@@ -1,0 +1,189 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <script>
+        //<![CDATA[
+        $(document).ready(function(){
+            $("[data-mask]").inputmask();
+
+            $('#type_visite').on('change',function(evt){
+                var valueVisite = $('#type_visite').val();
+                if (valueVisite == "reception"){
+                    $('#form_visite').empty().append(
+                        "<form id='form_visite' class='form-horizontal' role='form' method='POST' accept-charset='utf-8' action='/postvisitereceptioncommision'>" +
+                            "<div class='form-group'>" +
+                                "<label for='inputName' class='col-sm-2 control-label'>Date de la visite</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='date' type='date' name='date' value='' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<label for='inputName' class='col-sm-2 control-label'>Date d'autorisation d'ouverture</Da></label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='date' type='date' name='date_autorisation_ouverture' value='' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<label for='inputName' class='col-sm-2 control-label'>Délivrée par</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='Délivrée par' type='text' name='delivree_par' value='' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<label for='Entreprises_extId' class='col-sm-2 control-label'>Entreprise en charge de la visite</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='Entreprise de contrôle' type='vérificateur' id='entreprise_visite' name='Entreprises_extId' value='5b19227e57b6c5d729000002' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<label for='inputName' class='col-sm-2 control-label'>Visa</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='Visa' type='text' name='visa' value='' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<a class='col-xs-12 col-sm-2'>" +
+                                    "<a class='btn btn-primary'>" +
+                                        "<input type='submit' value='Envoyer le formulaire'>" +
+                                    "</a>" +
+                                "</a>" +
+                            "</div>" +
+                        "</form>"
+                    );
+                } else if (valueVisite == "periodique") {
+                    $('#form_visite').empty().append(
+                        "<form id='form_visite' class='form-horizontal' role='form' method='POST' accept-charset='utf-8' action='/postvisiteperiodiquecommision'>" +
+                            "<div class='form-group'>" +
+                                "<label for='inputName' class='col-sm-2 control-label'>Date de la visite</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='date' type='date' name='date' value='' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<label for='inputName' class='col-sm-2 control-label'>Observations</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='Observations' type='text' name='observations' value='' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<label for='Entreprises_extId' class='col-sm-2 control-label'>Entreprise en charge de la visite</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='Entreprise de contrôle' type='vérificateur' id='entreprise_visite' name='Entreprises_extId' value='5b19227e57b6c5d729000002' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<label for='inputName' class='col-sm-2 control-label'>Visa</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='Visa' type='text' name='visa' value='' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<a class='col-xs-12 col-sm-2'>" +
+                                    "<a class='btn btn-primary'>" +
+                                        "<input type='submit' value='Envoyer le formulaire'>" +
+                                    "</a>" +
+                                "</a>" +
+                            "</div>" +
+                        "</form>"
+                    );
+                } else if (valueVisite == "autreVisites") {
+                    $('#form_visite').empty().append(
+                        "<form id='form_visite' class='form-horizontal' role='form' method='POST' accept-charset='utf-8' action='/postautrevisites'>" +
+                            "<div class='form-group'>" +
+                                "<label for='inputName' class='col-sm-2 control-label'>Date de la visite</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='date' type='date' name='date' value='' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<label for='inputName' class='col-sm-2 control-label'>Nature de la visite</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='Nature de la visite' type='text' name='nature_visite' value='' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<label for='inputName' class='col-sm-2 control-label'>Observations</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='Observations' type='text' name='observations' value='' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<label for='Entreprises_extId' class='col-sm-2 control-label'>Entreprise en charge de la visite</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='Entreprise de contrôle' type='vérificateur' id='entreprise_visite' name='Entreprises_extId' value='5b19227e57b6c5d729000002' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<label for='inputName' class='col-sm-2 control-label'>Visa</label>" +
+                                "<div class='col-xs-10 col-sm-10'>" +
+                                    "<input class='form-control' placeholder='Visa' type='text' name='visa' value='' required='required' autofocus/>" +
+                                "</div>" +
+                            "</div>" +
+                            "<div class='form-group'>" +
+                                "<a class='col-xs-12 col-sm-2'>" +
+                                    "<a class='btn btn-primary'>" +
+                                        "<input type='submit' value='Envoyer le formulaire'>" +
+                                    "</a>" +
+                                "</a>" +
+                            "</div>" +
+                        "</form>"
+                    );
+                }
+            });
+        });
+    </script>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Formulaire d'ajout de visite de controle
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/index"><i class="fa fa-home"></i> Accueil</a></li>
+                <li><a href="/hscti_registresecuincendie"><i class="fa fa-angle-left"></i> Menu Principal RSI</a></li>
+                <li><a href="/btnaddverificationsuivi"><i class="fa fa-angle-left"></i> Menu vérification et suivi RSI</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- About Me Box -->
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <form id="form" class="form-horizontal" role="form" method="POST" accept-charset="utf-8" action="">
+                                <div class="form-group">
+                                    <label for="type_visite" class="col-sm-2 control-label">Type de visite</label>
+                                    <div class="col-sm-2">
+                                        <select class="form-control" id="type_visite" name="type" required="required">
+                                            <option value="" disabled selected>Choisir un type de visite</option>
+                                            <option value="reception">Réception</option>
+                                            <option value="periodique">Périodique</option>
+                                            <option value="autreVisites">Autres visites</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="box-body" id="form_visite">
+
+                            <!--Contenu dynamique du formulaire, établit dans la fonction JQuery-->
+
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}

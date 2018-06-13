@@ -1,0 +1,100 @@
+{{#content "head"}}
+    {{> head}}
+{{/content}}
+{{#content "nav"}}
+    {{> nav}}
+{{/content}}
+{{#content "page"}}
+    <script>
+        //<![CDATA[
+        $(document).ready(function(){
+            $("[data-mask]").inputmask();
+        });
+    </script>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Formulaire de suivi des incidents
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/index"><i class="fa fa-home"></i> Accueil</a></li>
+                <li><a href="/hscti_registresecuincendie"><i class="fa fa-angle-left"></i> Menu Principal RSI</a></li>
+                <li><a href="/btnaddverificationsuivi"><i class="fa fa-angle-left"></i> Menu vérification et suivi RSI</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- About Me Box -->
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <form class="form-horizontal" role="form" method="POST" accept-charset="utf-8" action="/postsuiviincident">
+                                <div class="form-group">
+                                    <label for="date_incident" class="col-sm-2 control-label">Date de l'incident</label>
+                                    <div class="col-xs-10 col-sm-10">
+                                        <input class="form-control" placeholder="date" type="date" name="date_incident" value="" required="required" autofocus/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nature_incident" class="col-sm-2 control-label">Nature de l'incident</label>
+                                    <div class="col-xs-10 col-sm-10">
+                                        <input class="form-control" placeholder="nature" type="text" name="nature_incident" value="" required="required" autofocus/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mesures_prises_immediatement" class="col-sm-2 control-label">Mesures prises immédiatement</label>
+                                    <div class="col-xs-10 col-sm-10">
+                                        <input class="form-control" placeholder="mesures" type="text" name="mesures_prises_immediatement" value="" required="required" autofocus/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="suite_donnees" class="col-sm-2 control-label">Suite données</label>
+                                    <div class="col-xs-10 col-sm-10">
+                                        <input class="form-control" placeholder="suite données" type="text" name="suite_donnees" value="" required="required" autofocus/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="RegistreUniqueDuPersonnel_extId" class="col-sm-2 control-label">Responsable du suivi</label>
+                                    <div class="col-sm-2">
+                                        <select class="form-control" id="responsable_suivi" name="RegistreUniqueDuPersonnel_extId" required="required">
+                                            {{#if result._id}}{{else}}
+                                                <option value="" disabled selected>Choisir un responsable de suivi</option>
+                                            {{/if}}
+                                            {{#each result}}
+                                                <option value="{{this._id}}" {{#if result._id}}{{#compare this.nom '{{this.nom}}' operator='=='}}selected{{/compare}}{{/if}}>{{this.nom}} {{this.prenom}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="visa" class="col-sm-2 control-label">Visa</label>
+                                    <div class="col-xs-10 col-sm-10">
+                                        <input class="form-control" placeholder="visa" type="text" name="visa" value="" required="required" autofocus/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <a class="col-xs-12 col-sm-2">
+                                        {{#if result.one}}
+                                            <input type="hidden" name="_id" value="{{result.one._id}}"/>
+                                        {{/if}}
+                                        <!--<a class="btn btn-primary" href="/formaddregistreetape2" role="button">suivant</a>-->
+                                        <a class="btn btn-primary"><input type="submit" value="Envoyer le formulaire"></a>
+                                    </a>
+                                </div>
+                            </form>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div>
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{{/content}}
+{{#content "footer"}}
+    {{> footer}}
+{{/content}}

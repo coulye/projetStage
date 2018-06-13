@@ -534,22 +534,6 @@
         "auth": true,
         "data_model": "RegistreSecuriteIncendie"
     },
-
-    "GET/documentuniqueevalrisquespros": {
-        "module": "finder",
-        "methode": "list",
-        "screen": "duerp",
-        "auth": true,
-        "data_model": "RegistreSecuriteIncendie"
-    },
-    "GET/tableaurisquespros": {
-        "module": "finder",
-        "methode": "list",
-        "screen": "tableaurisquespros",
-        "auth": true,
-        "data_model": "RegistreSecuriteIncendie"
-    },
-
     "GET/administration_database": {
         "module": "files",
         "methode": "read",
@@ -574,19 +558,21 @@
         "data_model": "RegistreSecuriteIncendie"
     },
     "POST/formaddregistreetape1": {
-        "module": "inserter",
-        "methode": "registreEtape",
-        "screen": "formaddregistreetape1",
-        "auth": true,
-        "params_names": [
-            ["data_creation", "nom", "prenom"],
-            ["libelle", "tel", "adresse1", "adresse2", "code_postal", "ville"],
-            ["libelle", "tel", "adresse1", "adresse2", "code_postal", "ville"],
-            ["libelle", "tel", "adresse1", "adresse2", "code_postal", "ville"]
-        ],
-        "data_model": ["MiseAJour", "NumeroUtiles", "NumerosUrgence", "Installateurs", "VerificateursAgrees"],
-        "redirect": true,
-        "redirect_action": "formaddregistreetape2"
+      "module": "inserter",
+      "methode": "one",
+      "screen": "formaddregistreetape1",
+      "auth": true,
+      "params_names": [
+        "nom",
+        "prenom",
+        "date_creation",
+        "visa",
+        "tel",
+        "adresse1"
+      ],
+      "data_model": "RegistreSecuriteIncendie",
+      "redirect": true,
+      "redirect_action": "formaddregistreetape2"
     },
     "GET/formaddregistreetape2": {
         "module": "finder",
@@ -595,39 +581,12 @@
         "auth": true,
         "data_model": "RegistreSecuriteIncendie"
     },
-    "POST/formaddregistreetape2": {
-        "module": "inserter",
-        "methode": "registreEtape2",
-        "screen": "formaddregistreetape2",
-        "auth": true,
-        "params_names": [
-            ["nom", "prenom"],
-            ["raison_social", "adresse1", "adresse2", "code_postal", "ville"],
-            ["libelle", "date_construction", "nbre_niveaux"],
-            ["emplacement", "date_maj", "visa"]
-        ],
-        "data_model": ["RegistreUniqueDuPersonnel", "Entreprises", "BatimentsEntreprises", "PlanEtablissement"],
-        "redirect": true,
-        "redirect_action": "formaddregistreetape3"
-    },
     "GET/formaddregistreetape3": {
         "module": "finder",
         "methode": "list",
         "screen": "formaddregistreetape3",
         "auth": true,
         "data_model": "RegistreSecuriteIncendie"
-    },
-    "POST/formaddregistreetape3": {
-        "module": "inserter",
-        "methode": "registreEtape",
-        "screen": "formaddregistreetape3",
-        "auth": true,
-        "params_names": [
-            "annee", "categorie_salarie", "nbre", "date_periode"
-        ],
-        "data_model": ["RegistreUniqueDuPersonnel"],
-        "redirect": true,
-        "redirect_action": "formaddregistreetape4"
     },
     "GET/formaddregistreetape4": {
         "module": "finder",
@@ -636,36 +595,12 @@
         "auth": true,
         "data_model": "RegistreSecuriteIncendie"
     },
-    "POST/formaddregistreetape4": {
-        "module": "inserter",
-        "methode": "registreEtape",
-        "screen": "formaddregistreetape4",
-        "auth": true,
-        "params_names": [
-            ["nom", "prenom"],
-            ["emplacement_poste_travail"]
-        ],
-        "data_model": ["RegistreUniqueDuPersonnel", "ServiceSecuriteIncendie"],
-        "redirect": true,
-        "redirect_action": "formaddregistreetape5"
-    },
     "GET/formaddregistreetape5": {
         "module": "finder",
         "methode": "list",
         "screen": "formaddregistreetape5",
         "auth": true,
         "data_model": "RegistreSecuriteIncendie"
-    },
-    "POST/formaddregistreetape5": {
-        "module": "inserter",
-        "methode": "registreEtape",
-        "screen": "formaddregistreetape4",
-        "auth": true,
-        "params_names":
-            ["theme", "observation", "date"],
-        "data_model": ["InstructionPersonnel"],
-        "redirect": true,
-        "redirect_action": "formaddregistreetape5"
     },
     "GET/formaddregistreetape6": {
         "module": "finder",
@@ -708,6 +643,159 @@
         "screen": "formaddregistre",
         "auth": true,
         "data_model": "RegistreSecuriteIncendie"
+    },
+    "GET/readregistre" : {
+        "module": "finder",
+        "methode": "list",
+        "screen": "readregistre",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "GET/btnaddverificationsuivi" : {
+        "module": "finder",
+        "methode": "list",
+        "screen": "btnaddverificationsuivi",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "GET/formaddverificationinstallations" : {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddverificationinstallations",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "GET/getInstallationExtincteur" : {
+        "module": "finder",
+        "methode": "list",
+        "auth": true,
+        "data_model": "RecensementExtincteur",
+        "return_type": "application/json"
+    },
+    "GET/getInstallationRia" : {
+        "module": "finder",
+        "methode": "list",
+        "auth": true,
+        "data_model": "RecensementRobinetIncendie",
+        "return_type": "application/json"
+    },
+    "GET/getInstallationAlarme" : {
+        "module": "finder",
+        "methode": "list",
+        "auth": true,
+        "data_model": "SystemeAlarmeAlerte",
+        "return_type": "application/json"
+    },
+    "GET/getInstallationEclairage" : {
+        "module": "finder",
+        "methode": "list",
+        "auth": true,
+        "data_model": "EclairageSecurite",
+        "return_type": "application/json"
+    },
+    "GET/getInstallationSystemeSécurité" : {
+        "module": "finder",
+        "methode": "list",
+        "auth": true,
+        "data_model": "RecensementSystemeSecurite",
+        "return_type": "application/json"
+    },
+    "GET/getInstallationAutre" : {
+        "module": "finder",
+        "methode": "list",
+        "auth": true,
+        "data_model": "RecensementAutreMoyens",
+        "return_type": "application/json"
+    },
+    "POST/postverificationinstallation" : {
+        "module": "inserter",
+        "methode": "one",
+        "auth": true,
+        "params_names": [
+            "date",
+            "numero",
+            "observation",
+            "Entreprises_extId",
+            "visa",
+            "type"
+        ],
+        "data_model": "VerificationInstallationSecurite",
+        "redirect": true,
+        "redirect_action": "btnaddverificationsuivi"
+    },
+    "GET/formaddsuiviincident" : {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddsuiviincident",
+        "auth": true,
+        "data_model": "RegistreUniqueDuPersonnel"
+    },
+    "POST/postsuiviincident" : {
+        "module": "inserter",
+        "methode": "one",
+        "auth": true,
+        "params_names": [
+            "date_incident",
+            "nature_incident",
+            "mesures_prises_immediatement",
+            "suite_donnees",
+            "RegistreUniqueDuPersonnel_extId",
+            "visa"
+        ],
+        "data_model": "SuiviIncidents",
+        "redirect": true,
+        "redirect_action": "btnaddverificationsuivi"
+    },
+    "GET/formaddvisite" : {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddvisite",
+        "auth" : true,
+        "data_model": "VisitePeriodiqueCommission"
+    },
+    "POST/postvisitereceptioncommision" : {
+        "module": "inserter",
+        "methode": "one",
+        "auth": true,
+        "params_names": [
+            "date",
+            "date_autorisation_ouverture",
+            "delivree_par",
+            "Entreprises_extId",
+            "visa"
+        ],
+        "data_model": "VisiteReceptionCommission",
+        "redirect": true,
+        "redirect_action": "btnaddverificationsuivi"
+    },
+    "POST/postvisiteperiodiquecommision" : {
+        "module": "inserter",
+        "methode": "one",
+        "auth": true,
+        "params_names": [
+            "date",
+            "observations",
+            "Entreprise_extId",
+            "visa"
+        ],
+        "data_model": "VisitePeriodiqueCommission",
+        "redirect": true,
+        "redirect_action": "btnaddverificationsuivi"
+    },
+    "POST/postautrevisites" : {
+        "module": "inserter",
+        "methode": "one",
+        "auth": true,
+        "params_names": [
+            "date",
+            "nature_visite",
+            "observations",
+            "Entreprise_extId",
+            "visa"
+        ],
+        "data_model": "AutreVisites",
+        "redirect": true,
+        "redirect_action": "btnaddverificationsuivi"
     }
 }
 

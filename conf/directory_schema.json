@@ -325,18 +325,18 @@
         "collection":"numeroutiles",
         "schema":{
             "_id":"ObjectId",
-            "installateurs_extId":[{
+            "installateurs_extId":{
                 "type":"ObjectId",
                 "ref":"Installateurs"
-            }],
-            "verificateursAgrees_extId":[{
+            },
+            "verificateursAgrees_extId":{
                 "type":"ObjectId",
                 "ref":"VerificateursAgrees"
-            }],
-            "numerosUrgence_extId":[{
+            },
+            "numerosUrgence_extId":{
                 "type":"ObjectId",
                 "ref":"NumerosUrgence"
-            }]
+            }
         }
     },
     "Installateurs":{
@@ -473,7 +473,7 @@
         }
     },
     "RecensementExtincteur":{
-        "collection":"recensementextincteur",
+        "collection":"recensementExtincteur",
         "schema":{
             "_id":"ObjectId",
             "numero":"String",
@@ -482,8 +482,8 @@
             "capacite":"String"
         }
     },
-    "VerificationMoyensExtinction":{
-        "collection":"verificationmoyensextinction",
+    "VerificationInstallationSecurite":{
+        "collection":"verificationInstallationSecurite",
         "schema":{
             "_id":"ObjectId",
             "date":"String",
@@ -493,7 +493,8 @@
                 "type":"ObjectId",
                 "ref":"Entreprises"
             },
-            "visa":"String"
+            "visa":"String",
+            "type":"String"
         }
     },
     "RecensementRobinetIncendie":{
@@ -512,7 +513,8 @@
             "_id":"ObjectId",
             "type":"String",
             "emplacement":"String",
-            "description":"String"
+            "description":"String",
+            "numero": "String"
         }
     },
     "RecensementSystemeSecurite":{
@@ -521,7 +523,8 @@
             "_id":"ObjectId",
             "type":"String",
             "nbre":"String",
-            "emplacement":"String"
+            "emplacement":"String",
+            "numero": "String"
         }
     },
     "SystemeAlarmeAlerte":{
@@ -530,7 +533,8 @@
             "_id":"ObjectId",
             "type":"String",
             "observations":"String",
-            "categorie":"String"
+            "categorie":"String",
+            "numero": "String"
         }
     },
     "EclairageSecurite":{
@@ -538,21 +542,8 @@
         "schema":{
             "_id":"ObjectId",
             "type":"String",
-            "conception_eclairage":"String"
-        }
-    },
-    "VerificationEclairage":{
-        "collection":"verificationeclairage",
-        "schema":{
-            "_id":"ObjectId",
-            "date":"String",
-            "emplacement":"String",
-            "observations":"String",
-            "Entreprises_extId":{
-                "type":"ObjectId",
-                "ref":"Entreprises"
-            },
-            "visa":"String"
+            "conception_eclairage":"String",
+            "numero": "String"
         }
     },
     "EntretienVerifInstallTechnique":{
@@ -590,7 +581,12 @@
             "_id":"ObjectId",
             "date":"String",
             "date_autorisation_ouverture":"String",
-            "delivree_par":"String"
+            "delivree_par":"String",
+            "Entreprises_extId":{
+              "type":"ObjectId",
+              "ref":"Entreprises"
+            },
+            "visa":"String"
         }
     },
     "VisitePeriodiqueCommission":{
@@ -599,6 +595,10 @@
             "_id":"ObjectId",
             "date":"String",
             "observations":"String",
+            "Entreprises_extId":{
+              "type":"ObjectId",
+              "ref":"Entreprises"
+            },
             "visa":"String"
         }
     },
