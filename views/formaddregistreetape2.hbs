@@ -39,19 +39,19 @@
 
             var addButtonplan = $('.add_buttonplan'); //bouton ajouter
             var wrapperplan = $('.field_wrapperplan'); //Input field wrapper
-            var fieldHTMLplan = '<div class="col-sm-3 col-sm-offset-2"><input class="form-control" placeholder="emplacement du plan" type="text" name="emplacement" value="{{#if
+            var fieldHTMLplan = '<div class="col-sm-3 col-sm-offset-2"><input class="form-control" placeholder="emplacement du plan" type="text" name="emplacement[]" value="{{#if
                             result}}{{result.PlanEtablissement.emplacement}}{{/if}}" required="required" autofocus/>\n' +
                     '                                        </div>\n' +
                     '                                        <div class="col-sm-2">\n' +
-                    '                                            <input class="form-control" type="date" name="date_maj" value="{{#if
+                    '                                            <input class="form-control" type="date" name="date_maj[]" value="{{#if
                             result}}{{result.BatimentsEntreprise.date_maj}}{{/if}}" required="required" autofocus/>\n' +
                     '                                        </div>\n' +
                     '                                        <div class="col-sm-3">\n' +
-                    '                                            <input class="form-control" placeholder="personne chargée de la mise a jour" type="text" name="representant_legal" value="{{#if
+                    '                                            <input class="form-control" placeholder="personne chargée de la mise a jour" type="text" name="representant_legal[]" value="{{#if
                             result}}{{result.Etablissement.representant_legal}}{{/if}}" required="required" autofocus/>\n' +
                     '                                        </div>\n' +
                     '                                        <div class="col-sm-2">\n' +
-                    '                                            <input class="form-control" placeholder="visa" type="text" name="visa" value="{{#if
+                    '                                            <input class="form-control" placeholder="visa" type="text" name="visa[]" value="{{#if
                             result}}{{result.PlanEtablissement.visa}}{{/if}}" required="required" autofocus/>\n' +
                     '                                        </div>';
             $(addButtonplan).click(function(){ //Once add button is clicked
@@ -184,16 +184,16 @@
                                         </div>
                                         <div class="field_wrapperplan">
                                         <div class="col-sm-3 col-sm-offset-2">
-                                            <input class="form-control" placeholder="emplacement du plan" type="text" name="emplacement" value="{{#if result}}{{result.PlanEtablissement.emplacement}}{{/if}}" required="required" autofocus/>
+                                            <input class="form-control" placeholder="emplacement du plan" type="text" name="emplacement[]" value="{{#if result}}{{result.PlanEtablissement.emplacement}}{{/if}}" required="required" autofocus/>
                                         </div>
                                         <div class="col-sm-2">
-                                            <input class="form-control" type="date" name="date_maj" value="{{#if result}}{{result.BatimentsEntreprise.date_maj}}{{/if}}" required="required" autofocus/>
+                                            <input class="form-control" type="date" name="date_maj[]" value="{{#if result}}{{result.BatimentsEntreprise.date_maj}}{{/if}}" required="required" autofocus/>
                                         </div>
                                         <div class="col-sm-3">
-                                            <input class="form-control" placeholder="personne chargée de la mise a jour" type="text" name="representant_legal" value="{{#if result}}{{result.Etablissement.representant_legal}}{{/if}}" required="required" autofocus/>
+                                            <input class="form-control" placeholder="personne chargée de la mise a jour" type="text" name="representant_legal[]" value="{{#if result}}{{result.Etablissement.representant_legal}}{{/if}}" required="required" autofocus/>
                                         </div>
                                         <div class="col-sm-2">
-                                            <input class="form-control" placeholder="visa" type="text" name="visa" value="{{#if result}}{{result.PlanEtablissement.visa}}{{/if}}" required="required" autofocus/>
+                                            <input class="form-control" placeholder="visa" type="text" name="visa[]" value="{{#if result}}{{result.PlanEtablissement.visa}}{{/if}}" required="required" autofocus/>
                                         </div>
                                         </div>
                                         <div class="col-sm-2" style="text-align: right">

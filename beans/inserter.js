@@ -182,66 +182,85 @@ exports.inserter = {
         logger.debug('params  : ', _controler.params);
         logger.debug('schema  : ', _controler.schema);
         var dataArray = _controler.params;
-        var dataMiseajour = {};
+        var dataTableau = {};
         var dataIntoArray = [];
-        var k = 0;
+
         // preparation des données reçues
+        /** todo : Attention ici on doit parcourir les lignes de saisie */
         for (var field in dataArray) {
             if (!Array.isArray(dataArray[field])) {
-                dataMiseajour[field] = dataArray[field];
+                dataTableau[field] = dataArray[field];
             }
-            else {
-                /** todo : ici transformer le tableau pour avoir un tableau de data par collection */
-                dataIntoArray.push({
-                    "raison_social": dataArray["raison_social"][k],
-                    "adresse1": dataArray["adresse1"][k],
-                    "adresse2": dataArray["adresse2"][k],
-                    "code_postal": dataArray["code_postal"][k],
-                    "ville": dataArray["ville"][k],
-                    "libelle": dataArray["libelle"][k],
-                    "date_construction": dataArray["date_construction"][k],
-                    "nbre_niveaux": dataArray["nbre_niveaux"][k],
-                    "emplacement": dataArray["emplacement"][k],
-                    "date_maj": dataArray["date_maj"][k],
-                    "visa": dataArray["visa"][k]
-                });   // ici field est un Array
-                k++;
-            }
-
-            GLOBAL.schemas[model[0]].createDocument(dataMiseajour, function (err, data_inserted1) {
-                var tabIds = [];
-                logger.debug("objet inséré via inserter.list : ", data_inserted1);
-
-                function insertArray(i, cbk) {
-                    logger.debug(" List inserter call");
-                    //sio.sockets.in(_controler.room).emit('user', {room: _controler.room, comment: ' One User\n\t Your Filter is :'});
-                    try {
-                        if (i < dataIntoArray.length) {
-                            GLOBAL.schemas[model[i]].createDocument(dataIntoArray[i], function (err, data_inserted) {
-                                //tabIds[model[i]] = [];
-                                logger.debug("objet inséré via inserter.list : ", data_inserted);
-                                tabIds.push(data_inserted._id);
-                                insertArray(i + 1, cbk);
-                            });
-                        } else {
-                            cbk();
-                        }
-                    } catch (err) { // si existe pas alors exception et on l'intègre via mongooseGeneric
-                        return cb(err);
-                    }
-
-                }
-
-                insertArray(0, function () {
-                    logger.debug('documents insérés');
-                    GLOBAL.schemas[model[1]].createDocument(dataIntoArray[1], function (err, data_inserted2) {
-                        logger.debug("data insérées : ", data_inserted2);
-                        return cb(null, {data: nbInserted, room: _controler.room});
-                    })
-
-                });
-
-            });
         }
+
+        var nbFieldsToinsertBat = dataArray["libelle"].length;
+        for (var k = 0; k < nbFieldsToinsertBat; k++) {
+            /** todo : ici transformer le tableau pour avoir un tableau de data par collection */
+            dataIntoArray.push({
+                "libelle": dataArray["libelle"][k],
+                "date_construction": dataArray["date_construction"][k],
+                "nbre_niveaux": dataArray["nbre_niveaux"][k]
+            });
+            logger.debug('documents nbFieldsToinsertBat compter : '+nbFieldsToinsertBat);
+        }
+
+        var nbFieldsToinsertPlan = dataArray["emplacement"].length;
+        for (var k = 0; k < nbFieldsToinsertPlan; k++) {
+            /** todo : ici transformer le tableau pour avoir un tableau de data par collection */
+            dataIntoArray.push({
+                "emplacement": dataArray["emplacement"][k],
+                "date_maj": dataArray["date_maj"][k],
+                "visa": dataArray["visa"][k]
+            });
+            logger.debug('documents nbFieldsToinsertPlan compter : '+nbFieldsToinsertPlan);
+        }
+// insertion des données de la collection MiseAJour, entête du formulaire
+        GLOBAL.schemas[model[0]].createDocument(dataTableau, function (err, data_inserted1) {
+            var tabIds = [];
+            logger.debug("objet inséré via inserter.registreEtape2 : ", data_inserted1);
+
+            // fonction récursive pour insérer les numéro de téléphone des différentes organisation et catgorie
+            function insertArray(j, cbk) {
+                logger.debug(" List inserter call");
+                var numeroModel = 0;
+                //sio.sockets.in(_controler.room).emit('user', {room: _controler.room, comment: ' One User\n\t Your Filter is :'});
+                try {
+                    if (j < 14) {
+                        if (j < 7) {
+                            numeroModel = 2;
+                        }
+                        else if (j > 8 && j < 11) {
+                            numeroModel = 3;
+                        }
+                        else if (j > 10 && j < 14) {
+                            numeroModel = 4;
+                        }
+                        GLOBAL.schemas[model[numeroModel]].createDocument(dataIntoArray[j], function (err, data_inserted) {
+                            logger.debug("objet inséré via inserter.registreEtape02 : ", data_inserted);
+                            tabIds.push(data_inserted._id);
+                            insertArray(j + 1, cbk);
+                        });
+                    } else {
+                        cbk();
+                    }
+                } catch (err) { // si existe pas alors exception et on l'intègre via mongooseGeneric
+                    return cb(err);
+                }
+            }
+            insertArray(0, function () {
+                logger.debug('documents insérés');
+                console.log('dataIntoArray : ', dataIntoArray);
+                console.log('tabIds : ', tabIds);
+                var dataToInsert = {
+                        BatimentsEntreprise_extId : tabIds.slice(10, 12),
+                        PlanEtablissement: tabIds.slice(13,15),
+                        Entreprises_extId: tabIds.slice(0, 9)
+                    }
+                GLOBAL.schemas[model[1]].createDocument(dataToInsert, function (err, data_inserted2) {
+                    logger.debug("data insérées : ", data_inserted2);
+                    return cb(null, {data: data_inserted2, room: _controler.room});
+                });
+            });
+        });
     }
 }

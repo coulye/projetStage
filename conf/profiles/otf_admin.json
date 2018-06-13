@@ -619,13 +619,13 @@
     },
     "POST/formaddregistreetape3": {
         "module": "inserter",
-        "methode": "registreEtape",
+        "methode": "listq",
         "screen": "formaddregistreetape3",
         "auth": true,
         "params_names": [
             "annee", "categorie_salarie", "nbre", "date_periode"
         ],
-        "data_model": ["RegistreUniqueDuPersonnel"],
+        "data_model": ["Effectif"],
         "redirect": true,
         "redirect_action": "formaddregistreetape4"
     },
@@ -708,6 +708,152 @@
         "screen": "formaddregistre",
         "auth": true,
         "data_model": "RegistreSecuriteIncendie"
+    },
+    "GET/btnaddverificationsuivi" : {
+        "module": "finder",
+        "methode": "list",
+        "screen": "btnaddverificationsuivi",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "GET/formaddverificationinstallations" : {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddverificationinstallations",
+        "auth": true,
+        "data_model": "RegistreSecuriteIncendie"
+    },
+    "GET/getInstallationExtincteur" : {
+        "module": "finder",
+        "methode": "list",
+        "auth": true,
+        "data_model": "RecensementExtincteur",
+        "return_type": "application/json"
+    },
+    "GET/getInstallationRia" : {
+        "module": "finder",
+        "methode": "list",
+        "auth": true,
+        "data_model": "RecensementRobinetIncendie",
+        "return_type": "application/json"
+    },
+    "GET/getInstallationAlarme" : {
+        "module": "finder",
+        "methode": "list",
+        "auth": true,
+        "data_model": "SystemeAlarmeAlerte",
+        "return_type": "application/json"
+    },
+    "GET/getInstallationEclairage" : {
+        "module": "finder",
+        "methode": "list",
+        "auth": true,
+        "data_model": "EclairageSecurite",
+        "return_type": "application/json"
+    },
+    "GET/getInstallationSystemeSécurité" : {
+        "module": "finder",
+        "methode": "list",
+        "auth": true,
+        "data_model": "RecensementSystemeSecurite",
+        "return_type": "application/json"
+    },
+    "GET/getInstallationAutre" : {
+        "module": "finder",
+        "methode": "list",
+        "auth": true,
+        "data_model": "RecensementAutreMoyens",
+        "return_type": "application/json"
+    },
+    "POST/postverificationinstallation" : {
+        "module": "inserter",
+        "methode": "one",
+        "auth": true,
+        "params_names": [
+            "date",
+            "numero",
+            "observation",
+            "Entreprises_extId",
+            "visa",
+            "type"
+        ],
+        "data_model": "VerificationInstallationSecurite",
+        "redirect": true,
+        "redirect_action": "btnaddverificationsuivi"
+    },
+    "GET/formaddsuiviincident" : {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddsuiviincident",
+        "auth": true,
+        "data_model": "RegistreUniqueDuPersonnel"
+    },
+    "POST/postsuiviincident" : {
+        "module": "inserter",
+        "methode": "one",
+        "auth": true,
+        "params_names": [
+            "date_incident",
+            "nature_incident",
+            "mesures_prises_immediatement",
+            "suite_donnees",
+            "RegistreUniqueDuPersonnel_extId",
+            "visa"
+        ],
+        "data_model": "SuiviIncidents",
+        "redirect": true,
+        "redirect_action": "btnaddverificationsuivi"
+    },
+    "GET/formaddvisite" : {
+        "module": "finder",
+        "methode": "list",
+        "screen": "formaddvisite",
+        "auth" : true,
+        "data_model": "VisitePeriodiqueCommission"
+    },
+    "POST/postvisitereceptioncommision" : {
+        "module": "inserter",
+        "methode": "one",
+        "auth": true,
+        "params_names": [
+            "date",
+            "date_autorisation_ouverture",
+            "delivree_par",
+            "Entreprises_extId",
+            "visa"
+        ],
+        "data_model": "VisiteReceptionCommission",
+        "redirect": true,
+        "redirect_action": "btnaddverificationsuivi"
+    },
+    "POST/postvisiteperiodiquecommision" : {
+        "module": "inserter",
+        "methode": "one",
+        "auth": true,
+        "params_names": [
+            "date",
+            "observations",
+            "Entreprise_extId",
+            "visa"
+        ],
+        "data_model": "VisitePeriodiqueCommission",
+        "redirect": true,
+        "redirect_action": "btnaddverificationsuivi"
+    },
+    "POST/postautrevisites" : {
+        "module": "inserter",
+        "methode": "one",
+        "auth": true,
+        "params_names": [
+            "date",
+            "nature_visite",
+            "observations",
+            "Entreprise_extId",
+            "visa"
+        ],
+        "data_model": "AutreVisites",
+        "redirect": true,
+        "redirect_action": "btnaddverificationsuivi"
     }
 }
 
